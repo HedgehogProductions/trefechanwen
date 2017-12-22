@@ -1,0 +1,377 @@
+.portfolio-header {
+    position: relative;
+    background-image: url(/static/images/header-bg.jpg);
+}
+
+.portfolio-header .mdl-layout__header-row {
+    padding: 0;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.mdl-layout__title {
+    font-size: 14px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.is-compact .mdl-layout__title span {
+    display: none;
+}
+
+.portfolio-logo-row {
+    min-height: 200px;
+}
+
+.is-compact .portfolio-logo-row {
+    min-height: auto;
+}
+
+.portfolio-logo {
+    background: url(/static/images/logo.png) 50% no-repeat;
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+    margin: auto auto 10px;
+}
+
+.is-compact .portfolio-logo {
+    height: 50px;
+    width: 50px;
+    margin-top: 7px;
+}
+
+.portfolio-navigation-row {
+    background-color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    height: 45px;
+}
+
+.portfolio-navigation-row  .mdl-navigation {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.portfolio-navigation-row .mdl-navigation__link {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    line-height: 42px;
+}
+
+.portfolio-navigation-row .is-active {
+    position: relative;
+    font-weight: bold;
+}
+
+.portfolio-navigation-row .is-active:after {
+    content: "";
+    width: 70%;
+    height: 2px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255,64,129);
+    left: 15%;
+}
+
+.portfolio-max-width {
+    max-width: 1200px;
+    margin: auto;
+}
+
+img.article-image {
+    width: 100%;
+    height: auto;
+}
+
+.intro-card {
+    padding: 16px;
+}
+
+.intro-card_title {
+    float: left;
+}
+
+.intro-card_sub-title {
+    float: right;
+}
+
+.access-card {
+    background-color: rgb(63,81,181);
+}
+
+.access-card > .mdl-card__title {
+    color: white;
+    align-items: start;
+}
+
+.access-card > .mdl-card__title > h4 {
+    margin-top: 0;
+}
+
+.access-card > .mdl-card__actions > .mdl-button--colored {
+    color: white;
+}
+
+.terms-card {
+    background-color: rgb(255,64,129);
+}
+
+.terms-card > .mdl-card__title {
+    color: white;
+    align-items: start;
+}
+
+.terms-card > .mdl-card__title > h4 {
+    margin-top: 0;
+}
+
+.terms-card > .mdl-card__actions > .mdl-button--colored {
+    color: white;
+}
+
+.book-card {
+    min-height: 256px;
+}
+
+.book-card > .mdl-card__supporting-text {
+    color: #ffffff;
+    background: url('/static/images/sunrise.jpg') center / cover;
+    width: 100%;
+}
+
+/*.book-card > .mdl-card__title > h2 {*/
+    /*margin-top: 0;*/
+/*}*/
+
+.book-card > .mdl-card__actions {
+    display: flex;
+    box-sizing:border-box;
+    align-items: center;
+}
+
+.book-card > .mdl-card__actions > .material-icons {
+    padding-right: 10px;
+    color: rgb(63,81,181);
+}
+
+/* Modals for terms and access statements */
+.terms-modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 56px auto auto auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {
+        top: 56px;
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+    to {
+        top: 0; opacity: 1}
+}
+
+.modal-ok-button {
+    float: right;
+}
+
+/*.barn-card > .mdl-card__title {*/
+    /*color: #fff;*/
+    /*height: 410px;*/
+    /*background: url('images/the-barn.jpg') center / cover;*/
+/*}*/
+
+/*.barn-card > .mdl-card__supporting-text {*/
+    /*height: */
+/*}*/
+
+/*.cottage-card > .mdl-card__title {*/
+    /*color: #fff;*/
+    /*height: 176px;*/
+    /*background: url('images/the-cottage.jpg') center / cover;*/
+/*}*/
+/*.cottage-card > .mdl-card__supporting-text {*/
+    /*position: absolute;*/
+    /*bottom: 0px;*/
+/*}*/
+
+.availability-button-container {
+    position: relative;
+}
+
+.availability-button-left {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.availability-button-right {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.availability-calendar-container {
+    justify-content: center;
+}
+
+.availability-calendar-title {
+    text-align: center;
+}
+
+.availability-calendar-month {
+    margin: 0 auto;
+}
+
+.availability-calendar-text {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    cursor: default;
+    border-right: 18px solid transparent;
+    border-left: 18px solid transparent;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+}
+
+.availability-calendar-day {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    background-color: rgb(255,64,129);
+    content: "";
+    padding: 0;
+    line-height: 0;
+}
+
+.availability-am .availability-calendar-text {
+    border-right-color: rgb(63,81,181);
+    border-bottom-color: rgb(63,81,181);
+}
+/*.availability-am a:after{border-right:36px solid rgb(76,175,80)}*/
+
+.availability-pm .availability-calendar-text {
+    border-left-color: rgb(63,81,181);
+    border-top-color: rgb(63,81,181);
+}
+
+.availability-change {
+    background-color: rgb(63,81,181);
+}
+
+.availability-full {
+    background-color: rgb(63,81,181);
+}
+
+.availability-calendar-grid {
+    margin: 0;
+    justify-content: center;
+}
+
+.availability-cottage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    display: block;
+    border-right: 18px solid transparent;
+    border-left: 18px solid transparent;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.availability-cottage-full {
+    background-color: rgb(76,175,80);
+}
+
+.availability-cottage-change {
+    background-color: rgb(76,175,80);
+}
+
+.availability-cottage-am {
+    border-right-color: rgb(76,175,80);
+    border-bottom-color: rgb(76,175,80);
+}
+
+.availability-cottage-pm {
+    border-left-color: rgb(76,175,80);
+    border-top-color: rgb(76,175,80);
+}
+
+.availability-barn {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 0;
+    display: block;
+    border-right: 18px solid transparent;
+    border-left: 18px solid transparent;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+.availability-barn-full {
+    background-color: rgb(3,169,244);
+}
+
+.availability-barn-change {
+    background-color: rgb(3,169,244);
+}
+
+.availability-barn-am {
+    border-right-color: rgb(3,169,244);
+    border-bottom-color: rgb(3,169,244);
+}
+
+.availability-barn-pm {
+    border-left-color: rgb(3,169,244);
+    border-top-color: rgb(3,169,244);
+}
