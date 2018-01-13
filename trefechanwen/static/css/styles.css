@@ -59,6 +59,7 @@
     -ms-flex: 1;
     flex: 1;
     line-height: 42px;
+    color: black;
 }
 
 .portfolio-navigation-row .is-active {
@@ -290,6 +291,10 @@ img.article-image {
     line-height: 0;
 }
 
+.availability-calendar-day.empty-day {
+    background-color: transparent;
+}
+
 .availability-am .availability-calendar-text {
     border-right-color: rgb(63,81,181);
     border-bottom-color: rgb(63,81,181);
@@ -374,4 +379,10 @@ img.article-image {
 .availability-barn-pm {
     border-left-color: rgb(3,169,244);
     border-top-color: rgb(3,169,244);
+}
+
+.location-card-map {
+    min-height: 350px;
+    height: 100%;
+    width: 100%;
 }

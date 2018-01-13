@@ -47,14 +47,14 @@ def availability(request):
         context={},
     )
 
-def news(request):
+def localinfo(request):
     """
-    View function for news page.
+    View function for local info page.
     """
 
     return render(
         request,
-        'news.html',
+        'localinfo.html',
         context={},
     )
 
