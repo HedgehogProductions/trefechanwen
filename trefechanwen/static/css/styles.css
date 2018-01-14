@@ -209,26 +209,6 @@ img.article-image {
     float: right;
 }
 
-/*.barn-card > .mdl-card__title {*/
-    /*color: #fff;*/
-    /*height: 410px;*/
-    /*background: url('images/the-barn.jpg') center / cover;*/
-/*}*/
-
-/*.barn-card > .mdl-card__supporting-text {*/
-    /*height: */
-/*}*/
-
-/*.cottage-card > .mdl-card__title {*/
-    /*color: #fff;*/
-    /*height: 176px;*/
-    /*background: url('images/the-cottage.jpg') center / cover;*/
-/*}*/
-/*.cottage-card > .mdl-card__supporting-text {*/
-    /*position: absolute;*/
-    /*bottom: 0px;*/
-/*}*/
-
 .availability-button-container {
     position: relative;
 }
