@@ -15,14 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from . import views as views
 from rest_framework import routers
-from bookings import views
+from bookings import views as bookings_views
 
 router = routers.DefaultRouter()
-router.register(r'bookings', views.BookingViewSet)
-router.register(r'propertys', views.PropertyViewSet)
+router.register(r'bookings', bookings_views.BookingViewSet)
+router.register(r'propertys', bookings_views.PropertyViewSet)
+
 
 urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    url(r'^cottage$', views.cottage, name='cottage'),
+    url(r'^barn$', views.barn, name='barn'),
+    url(r'^availability$', views.availability, name='availability'),
+    url(r'^localinfo$', views.localinfo, name='localinfo'),
+    url(r'^contact$', views.contact, name='contact'),
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))

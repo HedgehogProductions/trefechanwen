@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Trefechan Wen Cottage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale="1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+        <div class="mdl-layout__header-row portfolio-logo-row">
+            <span class="mdl-layout__title">
+                <div class="portfolio-logo"></div>
+                <span class="mdl-layout__title">Trefechan Wen</span>
+            </span>
+        </div>
+        <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                <a class="mdl-navigation__link is-active" href="{% url 'index' %}">Cottages</a>
+                <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
+                <a class="mdl-navigation__link" href="{% url 'localinfo' %}">Local Info</a>
+                <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+            <a class="mdl-navigation__link is-active" href="{% url 'index' %}">Cottages</a>
+            <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
+            <a class="mdl-navigation__link" href="{% url 'localinfo' %}">Local Info</a>
+            <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="mdl-grid portfolio-max-width">
+            <div class="terms-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h4>
+                        Saturday changeover<br>
+                        Sorry, no smoking in the Cottage
+                    </h4>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                        id="cottageTermsButton">
+                        See all Terms and Conditions
+                    </a>
+                </div>
+            </div>
+            <div class="book-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Book Now</h2>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                        href="{% url 'availability' %}">
+                        Check Availability
+                    </a>
+                    <div class="mdl-layout-spacer"></div>
+                    <i class="material-icons">event</i>
+                </div>
+            </div>
+            <div class="access-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h4>
+                        Wheelchair accessible bedroom<br>
+                        2 steps to front door
+                    </h4>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                        id="cottageAccessButton">
+                        Read Full Access Statement
+                    </a>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+                <!-- Lounge -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/the-cottage_lounge-2.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Lounge & Dining Area</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    A cosy lounge area with high beamed ceiling with exposed
+                    timbers, feature stone fireplace with
+                    wood-burning stove and comfortable
+                    seating for 4. Includes a 32&Prime; flat screen TV with
+                    DVD player, music system, a well stocked
+                    bookcase, games and a wealth of
+                    tourist information.<br>
+                    The dining area has a table with 4
+                    chairs. A high chair is available on request.<br>
+                    Stable doors lead to a garden and courtyard.
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+                <!-- Kitchen -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/the-cottage_kitchen.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Kitchen</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    A good sized, well equipped room, with
+                    fitted units, electric oven, gas hob,
+                    microwave, fridge/ freezer and washing
+                    machine. Tea towels are provided.<br>
+                    The cottage has oil fired central heating
+                    with radiators in all rooms.
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+                <!-- Bedroom -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/the-cottage_bedroom.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Bedroom</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    A downstairs bedroom with twin beds, wardrobe
+                    and well stocked book case. On request the
+                    two beds can be pushed together to make a large
+                    double bed &mdash; just let us know.<br>
+                    A travel cot (size????) is available on request.
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+                <!-- Crog Loft -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/the-cottage_crog-loft-2.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Crog Loft</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    Double bedroom in a galleried crog loft,
+                    snug under the rafters with sloping
+                    ceilings. This room is reached via a
+                    narrow spiral staircase (with stairgates)
+                    from the lounge.<br>
+                    Except for the travel cot all bedlinen is
+                    provided and is washed in chemical free
+                    detergent.
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+                <!-- Barn -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/the-cottage_bathroom.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Bathroom</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    The bathroom is on the ground floor
+                    with toilet, washbasin and bath with a
+                    shower over. Bath and hand towels are
+                    provided (but not beach or dog towels.)
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+                <!-- Garden -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/the-cottage_garden.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Garden</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    To the rear of the cottage is a sheltered,
+                    enclosed garden with seating area and
+                    garden furniture. To the front of the
+                    cottage is ample parking for cars.
+                    Attached to the cottage is a lockable
+                    outhouse which has a tumble drier and
+                    space for storing bikes, wetsuits etc.<br>
+                    N.B. there are the ruins of a traditional
+                    stone Welsh longhouse in the front
+                    courtyard &mdash; care with children, please.
+                    The front courtyard is shared with the
+                    owners.
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="cottageTermsModal" class="terms-modal">
+        <div class="modal-content mdl-card">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Terms & Conditions</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                <b>Winter Fuel Charge:</b> oil central heating, electricity and gas inclusive May to Sept. &pound;25
+                per week outside these dates. Free starter basket of logs.
+                <br><br>
+                <b>Discounts available:</b> A discount of &pound;50 will be applied for parties of 1 or 2 people OR
+                returning guests will be allowed a 10% reduction.
+                <br><br>
+                <b>Short Breaks:</b> Short breaks are available all year excluding Christmas and New Year. During the
+                winter weeks (beginning of November to end of February) prices are as follows - up to 3 nights -
+                &pound;259, up to 4 nights - &pound;299, up to 5 nights - &pound;339. For other times, please contact
+                us for prices. Small Party Discounts do not apply to short breaks.
+                <br><br>
+                <b>Payment:</b> Bookings are to be accompanied by a deposit of one third of the rent. The balance of
+                the rent must be paid 56 days (8 weeks) before the commencement of the holiday. The full amount is
+                payable if the arrival date is less than 56 days (8 weeks) from the date of booking.
+                <br><br>
+                <b>Cancellation:</b> In the event of cancellation, please advise us immediately. We will attempt to
+                re-let the property and return your payment, less a handling charge of &pound;25.00. If we are unable to
+                re-let all monies will be forfeited, so cancellation protection insurance is recommended.
+                <br><br>
+                In the unlikely event of the cottage becoming unavailable due to circumstances outside our control,
+                a complete refund will be paid.
+                <br><br>
+                <b>Dogs:</b> 2 dogs are welcome FREE. There is a charge of &pound;15 per week for additional dogs. Dogs
+                must not be allowed on furniture or beds and they must have their own bed/blankets to protect the floor
+                coverings. They should be up to date with flea and worming treatments and owners are responsible for
+                cleaning up any mess. Dogs must not be left alone in the cottage at any time.
+                <br><br>
+                <b>Arrival & Departure:</b> The cottage is available from 4:00 p.m. on the Saturday of arrival and
+                should be vacated by 10:00 a.m. on the day of departure. These times can be varied for winter 'short
+                breaks', just let us know what you would like.
+                <br><br>
+                <b>Bed linen & Towels:</b> Beds are fully made up and ready for your arrival. Kitchen and bath towels
+                are provided, however cot linen is not.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="modal-ok-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="{% url 'cottage' %}"
+                   id="cottageTermsClose">
+                    OK
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="cottageAccessModal" class="terms-modal">
+        <div class="modal-content mdl-card">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">The Cottage - Access Statement</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                <b>Exposure:</b> The cottage sits in a courtyard of former farm buildings. The rear garden backs onto
+                an open field.<br><br>
+                <b>Transport + Parking:</b> The site is within a mile of Goodwick town (shop, post office, doctor’s
+                surgery, pharmacy and railway station). There is level vehicular access and parking right to the front
+                door.<br><br>
+                <b>Front entrance door</b> is reached across a level block-paved path and two block steps. It is 90cm
+                wide with manual, colour-contrasted door handle at 125cm height and outside light.<br><br>
+                <b>Rear entrance door</b> is reached across a level block-paved path and one block step. It is 80cm wide
+                with manual, colour-contrasted door handle at 125cm height and outside light.<br><br>
+                <b>All rooms</b> &mdash; apart from the crog-loft bedroom 1 &mdash; are on ground-floor level with no
+                steps or slopes and with inward-opening doors 80cm wide.<br><br>
+                <b>Kitchen</b> surfaces and power points are at traditional cabinet height as is the cooking hob. Two
+                double power points at 15cm above floor level.<br><br>
+                <b>Bathroom</b> has a wheelchair accessible toilet without support rails. Shower is over a standard bath
+                and is not accessible by wheelchair.<br><br>
+                <b>Bedroom 2</b> is wheelchair accessible and furniture can be rearranged (e.g. twin beds pushed
+                together as double bed) on prior request.<br><br>
+                <b>Crog-loft bedroom 1</b> has limited headroom and is accessed via a narrow 11-stepped spiral staircase
+                which may prove problematic to guests of limited mobility.<br><br>
+                <b>Rear garden</b> has level block-paved path and generally level seating area. Gravel paths run round
+                either side to the front of the cottage. Grassy area has gentle slopes within the boundary banks.<br><br>
+                <b>Cottage information</b> includes user instructions for appliances provided and details of local
+                facilities and destinations.<br><br>
+                <b>Miscellaneous:</b> Owners live on site. Postcode is SA64 0HS but SatNav is likely to take you past
+                the premises. There are the ruins of a Welsh Longhouse adjacent to the front courtyard so care is
+                needed with children. The drive from the road is shared with owners and their neighbours. Mobile
+                phone signal is generally good; internet hub details are provided. Electricity and water are mains-
+                supplied; cooking is by electricity and bottled gas; heating by oil boiler and log burner.<br>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="modal-ok-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="{% url 'cottage' %}"
+                   id="cottageAccessClose">
+                    OK
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script defer src="{% static 'scripts/cottages.js'%}"></script>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
