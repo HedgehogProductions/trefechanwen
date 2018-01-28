@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Trefechan Wen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale="1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+        <div class="mdl-layout__header-row portfolio-logo-row">
+            <span class="mdl-layout__title">
+                <div class="portfolio-logo"></div>
+                <span class="mdl-layout__title">Trefechan Wen</span>
+            </span>
+        </div>
+        <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
+                <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
+                <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
+                <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+            <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
+            <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
+            <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
+            <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="mdl-grid portfolio-max-width">
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+                <!-- Coast Path -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/walking_coast-path.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Pembrokeshire Coast Path</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    <a href="http://nt.pcnpa.org.uk/" target="_blank">Pembrokeshire Coast Path</a>.
+                    Enjoy 186 miles of breathtaking coastal scenery. Trefechan Wen is a good base from which to explore
+                    the Coast Path. OS maps OL35 and OL36 are useful.
+                    <a href="http://www.richardsbros.co.uk/local-bus-services/" target="_blank">Local bus services</a>,
+                    imaginatively named the Strumble Shuttle, Celtic Coaster and Puffin Shuttle are ideal for walkers.
+                    <br><br>
+                    <i>“We have had a wonderful week in this fabulous cottage with our dogs. We have used the cottage
+                    as a base to start the Coast Path, from Cardigan, which has worked very well. The walk was glorious,
+                        fantastic scenery and colonies of seals”</i>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+                <!-- National Park -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/walking_national-park.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Pembrokeshire National Park</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    <a href="http://www.pembrokeshirecoast.wales/" target="_blank">Pembrokeshire National Park</a>
+                    is Britain’s only coastal National Park and was established in 1952.  The National Park website has
+                    a wealth of information including lots of walks that are not part of the Coast Path.  We have
+                    printed a selection of these walks for our guests &mdash; including some ‘walks from the door’.
+                    <br><br>
+                    <i>“Visited all the quiet corners along the coast from here down to Abereiddy we have come to love
+                    over many years of North Pembs holidays. The charm is that change has been minimal, long may it be
+                        so.”</i>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+                <!-- Daugleddau -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/walking_daugleddau.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">The Daugleddau</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    <a href="http://www.visitpembrokeshire.com/explore-pembrokeshire/daugleddau-estuary/" target="_blank">
+                    The Daugleddau Estuary</a>
+                    is the coming together of four rivers; East and West Cleddau, Carew and Creswell. It is a magical
+                    place good for walking and wildlife watching. It tends to be overlooked by visitors to Pembrokeshire
+                    so is often very peaceful and quiet. Discover Carew Castle, Lawrenny Quay or walk part of the
+                    Landsker Border Trail, all very different to the coastal scenery.
+                    <br><br>
+                    <i>“Canaston Bridge/Slebech Woods, Minwear Woods provide some interesting views of the upper
+                        reaches of the Cleddau and its tidal range”</i>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+                <!-- Preseli Hills -->
+                <div class="mdl-card__media">
+                    <img class="article-image" src="{% static 'images/walking_preseli.jpg'%}" border="0" alt="">
+                </div>
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">The Preseli Hills</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-card--expand">
+                    <a href="http://www.visitpembrokeshire.com/explore-pembrokeshire/preseli-mountains/" target="_blank">
+                    The Preseli Hills</a>
+                    provide another contrast to Pembrokeshire’s famous coast. This is a landscape of wild moorland,
+                    heath and grasslands. On a clear day the views are panoramic, taking in Snowdonia, the Gower and
+                    Ireland. Paths here are ancient &mdash; follow in our ancestors’ footsteps.
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>

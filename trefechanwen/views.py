@@ -58,6 +58,17 @@ def localinfo(request):
         context={},
     )
 
+def walking(request):
+    """
+    View function for walking page.
+    """
+
+    return render(
+        request,
+        'walking.html',
+        context={},
+    )
+
 def contact(request):
     """
     View function for contact page.

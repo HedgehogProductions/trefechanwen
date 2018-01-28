@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^barn$', views.barn, name='barn'),
     url(r'^availability$', views.availability, name='availability'),
     url(r'^localinfo$', views.localinfo, name='localinfo'),
+    url(r'^walking$', views.walking, name='walking'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
