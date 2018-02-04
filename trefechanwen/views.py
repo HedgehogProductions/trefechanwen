@@ -58,6 +58,17 @@ def localinfo(request):
         context={},
     )
 
+def location(request):
+    """
+    View function for location page.
+    """
+
+    return render(
+        request,
+        'location.html',
+        context={},
+    )
+
 def walking(request):
     """
     View function for walking page.
@@ -66,6 +77,28 @@ def walking(request):
     return render(
         request,
         'walking.html',
+        context={},
+    )
+
+def beaches(request):
+    """
+    View function for beaches page.
+    """
+
+    return render(
+        request,
+        'beaches.html',
+        context={},
+    )
+
+def wildlife(request):
+    """
+    View function for wildlife page.
+    """
+
+    return render(
+        request,
+        'wildlife.html',
         context={},
     )
 

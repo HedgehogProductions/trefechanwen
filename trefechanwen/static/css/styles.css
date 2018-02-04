@@ -30,7 +30,7 @@
 }
 
 .portfolio-logo {
-    background: url(/static/images/logo.png) 50% no-repeat;
+    background: url(/static/images/logo-2.png) 50% no-repeat;
     background-size: cover;
     height: 150px;
     width: 150px;
@@ -145,10 +145,6 @@ img.article-image {
     background: url('/static/images/sunrise.jpg') center / cover;
     width: 100%;
 }
-
-/*.book-card > .mdl-card__title > h2 {*/
-    /*margin-top: 0;*/
-/*}*/
 
 .book-card > .mdl-card__actions {
     display: flex;
@@ -366,4 +362,24 @@ img.article-image {
     min-height: 350px;
     height: 100%;
     width: 100%;
+}
+
+.facilities-card {
+    min-height: 256px;
+    background: url('/static/images/signpost_1.jpg') center / cover;
+}
+
+.eating-out-card {
+    min-height: 256px;
+    background: url('/static/images/wave_1.jpg') center / cover;
+}
+
+.festivals-card {
+    min-height: 256px;
+    background: url('/static/images/sky_2.jpg') center / cover;
+}
+
+.info-provided-card {
+    min-height: 256px;
+    background: url('/static/images/sky_3.jpg') center / cover;
 }
