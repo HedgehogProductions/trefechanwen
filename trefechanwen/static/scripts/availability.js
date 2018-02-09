@@ -60,6 +60,7 @@ function getBookedDates(property, xmlHttpResults) {
         switch(booking_status) {
             case "FR":
                 break;
+            case "CH":
             case "BK":
                 bookings.set(date.getDate(), BookingType.ALL);
                 break;

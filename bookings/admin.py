@@ -3,6 +3,10 @@ from django import forms
 from datetime import timedelta, date
 import logging
 
+from django.db.models.signals import pre_delete
+
+from django.dispatch import receiver
+
 from .models import Booking, Property, AvailabilityDate
 
 def daterange(start_date, end_date):
@@ -141,7 +145,7 @@ class BookingForm(forms.ModelForm):
                             logger.error("Cottage booking status changing to " + str(availabilityDate.cottage_booking_status))
                         else:
                             logger.error("Status for Cottage should have been free or booked AM: " + str(availabilityDate))
-                            raise ValueError("Booking status incorrect")
+                            raise ValueError("Booking status incorrect - is the property already booked on " + str(availabilityDate.date) + "?")
                     elif self.instance.property.name == "Barn":
                         if str(availabilityDate.barn_booking_status) == "AM":
                             availabilityDate.barn_booking_status = "CH"
@@ -149,7 +153,7 @@ class BookingForm(forms.ModelForm):
                             availabilityDate.barn_booking_status = "PM"
                         else:
                             logger.error("Status for Barn should have been free or booked AM: " + str(availabilityDate))
-                            raise ValueError("Booking status incorrect")
+                            raise ValueError("Booking status incorrect - is the property already booked on " + str(availabilityDate.date) + "?")
                     else:
                         logger.error("Property(" + str(old_property) + ") not valid")
                         raise ValueError("Invalid Property")
@@ -160,13 +164,13 @@ class BookingForm(forms.ModelForm):
                             availabilityDate.cottage_booking_status = "BK"
                         else:
                             logger.error("Status for Cottage should have been free: " + str(availabilityDate))
-                            raise ValueError("Booking status incorrect")
+                            raise ValueError("Booking status incorrect - is the property already booked on " + str(availabilityDate.date) + "?")
                     elif self.instance.property.name == "Barn":
                         if str(availabilityDate.barn_booking_status) == "FR":
                             availabilityDate.barn_booking_status = "BK"
                         else:
                             logger.error("Status for Barn should have been free: " + str(availabilityDate))
-                            raise ValueError("Booking status incorrect")
+                            raise ValueError("Booking status incorrect - is the property already booked on " + str(availabilityDate.date) + "?")
                     else:
                         logger.error("Property(" + str(old_property) + ") not valid")
                         raise ValueError("Invalid Property")
@@ -215,22 +219,85 @@ class AvailabilityAdmin(admin.ModelAdmin):
     list_display = ('date', 'cottage_booking_status', 'barn_booking_status')
     list_filter = ('date', 'cottage_booking_status', 'barn_booking_status',)
 
-    #def get_list_display_links(self, request, list_display):
-    #    """
-    #    Return a sequence containing the fields to be displayed as links
-    #    on the changelist. The list_display parameter is the list of fields
-    #    returned by get_list_display().
 
-    #    We override Django's default implementation to specify no links unless
-    #    these are explicitly set.
-    #    """
-    #    if self.list_display_links or not list_display:
-    #        return self.list_display_links
-    #    else:
-    #        return (None,)
 
-    #def has_add_permission(self, request):
-    #    return False
+# Catch signal when a booking is about to be deleted
+@receiver(pre_delete, sender=Booking)
+def delete_booking(sender, instance, **kwargs):
+    logger = logging.getLogger(__name__)
+    logger.error("About to delete a booking: " + str(instance))
+
+    # clear the property from the old dates - if there are any
+    # Revert booking status on all 'AvailabilityDate's
+    for oldBookingDate in daterange(instance.start_date, instance.end_date):
+        availabilityDate = AvailabilityDate.objects.get(date=oldBookingDate)
+
+        # Old Start date: (Changeover -> Booked AM) OR (Booked PM -> Free) else error
+        if oldBookingDate == instance.start_date:
+            if instance.property.name == "Cottage":
+                logger.error("Cottage booking status changing from " + str(availabilityDate.cottage_booking_status))
+                if str(availabilityDate.cottage_booking_status) == "CH":
+                    availabilityDate.cottage_booking_status = "AM"
+                elif str(availabilityDate.cottage_booking_status) == "PM":
+                    availabilityDate.cottage_booking_status = "FR"
+                else:
+                    logger.error("Status for Cottage should have been changeover or booked PM: " + str(availabilityDate))
+                    raise ValueError("Booking status incorrect")
+            elif instance.property.name == "Barn":
+                if str(availabilityDate.barn_booking_status) == "CH":
+                    availabilityDate.barn_booking_status = "AM"
+                elif str(availabilityDate.barn_booking_status) == "PM":
+                    availabilityDate.barn_booking_status = "FR"
+                else:
+                    logger.error("Status for Barn should have been changeover or booked PM: " + str(availabilityDate))
+                    raise ValueError("Booking status incorrect")
+            else:
+                logger.error("Property(" + str(old_property) + ") not valid")
+                raise ValueError("Invalid Property")
+        # Old Middle date: (Booked -> Free) else error
+        else:
+            if instance.property.name == "Cottage":
+                if str(availabilityDate.cottage_booking_status) == "BK":
+                    availabilityDate.cottage_booking_status = "FR"
+                else:
+                    logger.error("Status for Cottage should have been booked: " + str(availabilityDate))
+                    raise ValueError("Booking status incorrect")
+            elif instance.property.name == "Barn":
+                if str(availabilityDate.barn_booking_status) == "BK":
+                    availabilityDate.barn_booking_status = "FR"
+                else:
+                    logger.error("Status for Barn should have been booked: " + str(availabilityDate))
+                    raise ValueError("Booking status incorrect")
+            else:
+                logger.error("Property(" + str(old_property) + ") not valid")
+                raise ValueError("Invalid Property")
+        availabilityDate.save()
+
+    # sort end date
+    availabilityDate = AvailabilityDate.objects.get(date=instance.end_date)
+
+    # Old End date: (Changeover -> Booked PM) OR (Booked AM -> Free) else error
+    if instance.property.name == "Cottage":
+        if str(availabilityDate.cottage_booking_status) == "CH":
+            availabilityDate.cottage_booking_status = "PM"
+        elif str(availabilityDate.cottage_booking_status) == "AM":
+            availabilityDate.cottage_booking_status = "FR"
+        else:
+            logger.error("Status for Cottage should have been changeover or booked AM: " + str(availabilityDate))
+            raise ValueError("Booking status incorrect")
+    elif instance.property.name == "Barn":
+        if str(availabilityDate.barn_booking_status) == "CH":
+            availabilityDate.barn_booking_status = "PM"
+        elif str(availabilityDate.barn_booking_status) == "AM":
+            availabilityDate.barn_booking_status = "FR"
+        else:
+            logger.error("Status for Cottage should have been changeover or booked AM: " + str(availabilityDate))
+            raise ValueError("Booking status incorrect")
+    availabilityDate.save()
+
+    # clear the old dates from the booking - if there are any
+    instance.dates.clear()
+
 
 
 # Register your models here.
