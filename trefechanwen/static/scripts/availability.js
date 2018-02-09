@@ -4,7 +4,12 @@ var BookingType = {
     NONE: 0,
     ALL: 1,
     AM: 2,
-    PM: 3,
+    PM: 3
+};
+
+var Property = {
+    COTTAGE: 0,
+    BARN: 1
 };
 
 // Get last day of the month
@@ -15,7 +20,7 @@ function daysInMonth(month, year) {
 
 // Get the html for a calendar cell with given text
 function getCellHtml(content, bookingType) {
-    var cellHtmlClass = ""
+    var cellHtmlClass = "";
     switch(bookingType) {
         case BookingType.ALL:
             cellHtmlClass = " availability-full";
@@ -34,40 +39,47 @@ function getEmptyCellHtml(content) {
     return "<td class=\"availability-calendar-day empty-day\"><a class=\"availability-calendar-text\" href=\"#\">" + content + "</a></td>";
 }
 
-// Extract dates booked between two dates from database results
-function getBookedDates(firstDay, lastDay, xmlHttpResults) {
-    var bookings = {};
-    console.log("getBookedDates");
-    var bookingsJson = JSON.parse(xmlHttpResults);
-    console.log("looking at " + bookingsJson.results.length + " bookings");
-    for (var bookingNumber =0; bookingNumber < bookingsJson.results.length; ++bookingNumber) {
-        var startDate = new Date(bookingsJson.results[bookingNumber].start_date);
-        var endDate = new Date(bookingsJson.results[bookingNumber].end_date);
-        var bookingLength = endDate - startDate;
-        console.log("Got booking for " + startDate.toISOString() + " to " + endDate.toISOString() + "(" + bookingLength + " days)");
-        if ( startDate >= firstDay ) {
-            bookings[startDate.getDate()] = BookingType.PM;
+// Extract dates booked from database results, given a property and month
+function getBookedDates(property, xmlHttpResults) {
+    var bookings = new Map();
+    var bookingStatus = BookingType.NONE;
+    var datesJson = JSON.parse(xmlHttpResults);
+    for (var dateNumber = 0; dateNumber < datesJson.results.length; ++dateNumber) {
+        var date = new Date(datesJson.results[dateNumber].date);
+        //var bookingsSet = datesJson.results[date]
+        switch(property) {
+            case Property.COTTAGE:
+                booking_status = datesJson.results[dateNumber].cottage_booking_status;
+                break;
+            case Property.BARN:
+                booking_status = datesJson.results[dateNumber].barn_booking_status;
+                break;
+            default:
+                console.error("Cannot get booked dates for unknown property " + property);
         }
-        if ( endDate <= lastDay ) {
-            bookings[endDate.getDate()] = BookingType.AM;
+        switch(booking_status) {
+            case "FR":
+                break;
+            case "BK":
+                bookings.set(date.getDate(), BookingType.ALL);
+                break;
+            case "AM":
+                bookings.set(date.getDate(), BookingType.AM);
+                break;
+            case "PM":
+                bookings.set(date.getDate(), BookingType.PM);
+                break;
+            default:
+                console.error("Cannot handle unknown booking status " + bookingStatus + " on " + date.toISOString());
         }
-        // for (var fullDay = startDate.getDate()+1; fullDay < endDate && fullDay <= lastDay; startDate.setDate(startDate.getDate + 1)) {
-        //     if (fullDay >= firstDay) {
-        //         bookings[fullDay.getDate()] = BookingType.ALL;
-        //     }
-        // }
-
     }
-
     return bookings;
 }
 
 // Build HTML for month calendar view
-function getMonthHtml(month, year, xmlHttpResults) {
+function getMonthHtml(month, year, property, xmlHttpResults) {
     var firstDayOfMonth = new Date(year, month, 1);
-    var lastDayOfMonth = daysInMonth(month, year);
-    var bookedDates = getBookedDates(firstDayOfMonth, lastDayOfMonth, xmlHttpResults);
-    console.log("Booked on: " + bookedDates);
+    var bookedDates = getBookedDates(property, xmlHttpResults);
 
     var monthHtml = "";
 
@@ -103,7 +115,7 @@ function getMonthHtml(month, year, xmlHttpResults) {
         if ((dayOfMonth + emptyCells) % 7 === 1) {
             monthHtml += "<tr>";
         }
-        monthHtml += getCellHtml(dayOfMonth.toString(), bookedDates[dayOfMonth]);
+        monthHtml += getCellHtml(dayOfMonth.toString(), bookedDates.get(dayOfMonth));
         if ((dayOfMonth + emptyCells) % 7 === 0) {
             monthHtml += "</tr>";
         }
@@ -112,22 +124,31 @@ function getMonthHtml(month, year, xmlHttpResults) {
     return monthHtml;
 }
 
-function updateMonthView(viewId, xmlHttpResults) {
+function updateMonthView(viewId, property, xmlHttpResults) {
     var currentMonth = document.getElementById(viewId).getAttribute("month");
     var currentYear = document.getElementById(viewId).getAttribute("year");
     var firstDayOfMonth = new Date(currentYear, currentMonth, 1);
 
-    document.getElementById(viewId).innerHTML = getMonthHtml(firstDayOfMonth.getMonth(), firstDayOfMonth.getFullYear(), xmlHttpResults);
+    document.getElementById(viewId).innerHTML = getMonthHtml(firstDayOfMonth.getMonth(), firstDayOfMonth.getFullYear(), property, xmlHttpResults);
 }
 
 function changeAllMonths(monthChange) {
     // Update attributes to new months
     var currentMonth = document.getElementById("availabilityCalendarCottageMonth1").getAttribute("month");
     var currentYear = document.getElementById("availabilityCalendarCottageMonth1").getAttribute("year");
+
     var firstDayOfMonth = new Date(currentYear, currentMonth, 1);
     firstDayOfMonth.setMonth(firstDayOfMonth.getMonth() + monthChange);
+
     var firstDayOfNextMonth = new Date(firstDayOfMonth);
     firstDayOfNextMonth.setMonth(firstDayOfNextMonth.getMonth()+1);
+
+    var lastDayOfMonth = new Date(firstDayOfNextMonth);
+    lastDayOfMonth.setDate(lastDayOfMonth.getDate()-1);
+
+    var lastDayOfNextMonth = new Date(firstDayOfNextMonth);
+    lastDayOfNextMonth.setMonth(lastDayOfNextMonth.getMonth()+1);
+    lastDayOfNextMonth.setDate(lastDayOfNextMonth.getDate()-1);
 
     document.getElementById("availabilityCalendarCottageMonth1").setAttribute("month", firstDayOfMonth.getMonth());
     document.getElementById("availabilityCalendarCottageMonth1").setAttribute("year", firstDayOfMonth.getFullYear());
@@ -139,18 +160,28 @@ function changeAllMonths(monthChange) {
     document.getElementById("availabilityCalendarBarnMonth2").setAttribute("year", firstDayOfNextMonth.getFullYear());
 
     // Get availability data and use to update html
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    var urlParamsMonth1 = "/availabilitydates/?format=json&limit=100&start_date="
+        + firstDayOfMonth.toISOString().substring(0,10) + "&end_date=" + lastDayOfMonth.toISOString().substring(0,10);
+    var urlParamsMonth2 = "/availabilitydates/?format=json&limit=100&start_date="
+        + firstDayOfNextMonth.toISOString().substring(0,10) + "&end_date=" + lastDayOfNextMonth.toISOString().substring(0,10);
+    var xhttpRequestMonth1 = new XMLHttpRequest();
+    var xhttpRequestMonth2 = new XMLHttpRequest();
+    xhttpRequestMonth1.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log("Got bookings: " + this.responseText);
-            updateMonthView("availabilityCalendarCottageMonth1", this.responseText);
-            updateMonthView("availabilityCalendarCottageMonth2", this.responseText);
-            updateMonthView("availabilityCalendarBarnMonth1", this.responseText);
-            updateMonthView("availabilityCalendarBarnMonth2", this.responseText);
+            updateMonthView("availabilityCalendarCottageMonth1", Property.COTTAGE, this.responseText);
+            updateMonthView("availabilityCalendarBarnMonth1", Property.BARN, this.responseText);
         }
     };
-    xhttp.open("GET", "/bookings/", true);
-    xhttp.send();
+    xhttpRequestMonth2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            updateMonthView("availabilityCalendarCottageMonth2", Property.COTTAGE, this.responseText);
+            updateMonthView("availabilityCalendarBarnMonth2", Property.BARN, this.responseText);
+        }
+    };
+    xhttpRequestMonth1.open("GET", urlParamsMonth1, true);
+    xhttpRequestMonth1.send();
+    xhttpRequestMonth2.open("GET", urlParamsMonth2, true);
+    xhttpRequestMonth2.send();
 }
 
 function showNextMonth() {

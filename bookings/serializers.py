@@ -1,6 +1,11 @@
-from .models import Booking, Property
+from .models import AvailabilityDate, Booking, Property
 from rest_framework import serializers
 
+
+class AvailabilityDateSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = AvailabilityDate
+        fields = ('date', 'cottage_booking_status', 'barn_booking_status')
 
 class BookingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
