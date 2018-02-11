@@ -1,187 +1,161 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Trefechan Wen</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale="1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+{% block header %}
+{% with 'localinfo' as activeTab %}
+{{block.super}}
+{% endwith %}
+{% endblock %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-</head>
-
-<body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-        <div class="mdl-layout__header-row portfolio-logo-row">
-            <span class="mdl-layout__title">
-                <div class="portfolio-logo"></div>
-                <span class="mdl-layout__title">Trefechan Wen</span>
-            </span>
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="mdl-grid portfolio-max-width">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+            <!-- Map -->
+            <div id="map" class="location-card-map">
+            </div>
         </div>
-        <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
-            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-                <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
-                <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
-                <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-            </nav>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+            <!-- Location -->
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Location</h2>
+            </div>
+            <div class="mdl-card__title">
+                <div class="mdl-card__subtitle-text">
+                    <b>Pembrokeshire Coast path</b> &mdash; 15 min walk;<br>
+                    <b>Goodwick</b> &mdash; 1 miles;<br>
+                    <b>Fishguard</b> &mdash; 3 miles<br>
+                    </p>
+                </div>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Trefechan Wen lies close to the hamlet of Llanwnda on the rugged north coast of Pembrokeshire.
+                Goodwick is at the bottom of the hill and Fishguard is on the far side of the bay. Further afield
+                are the City of St David’s with its famous Cathedral, the wildlife islands of Skomer and Ramsey,
+                renowned for their seals, birds and wildflowers, and Cardigan with its newly restored castle and
+                the Teifi Marshes and wildlife centre.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="{% url 'location' %}">
+                    Find out more
+                </a>
+            </div>
         </div>
-    </header>
-    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-            <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-            <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
-            <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
-            <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-        </nav>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+            <!-- Walking -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/abermawr.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Walking</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Pembrokeshire has a variety of majestic landscapes: 186 miles of superb coast path; the
+                Preseli Hills, source of the bluestones of Stonehenge; the Cleddau estuary, a maze of wooded tidal
+                inlets. All these areas are easily accessible for walkers. There are routes to suit all inclinations,
+                from strolls out of Trefechan Wen to all day hikes for the hardy.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="{% url 'walking' %}">
+                    Find out more
+                </a>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+            <!-- Beaches -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/marloes.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Beaches</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Pembrokeshire boasts over 50 beaches from wide sandy stretches such as Whitesands
+                and Newport to tiny coves like Abercastle or Pwllgwaelod. Many beaches are dog friendly but
+                some of the larger ones have dog-free zones during the summer months.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="{% url 'beaches' %}">
+                    Find out more
+                </a>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+            <!-- Wildlife -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/heron.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Wildlife</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Take a trip round the Islands to spot seals and puffins or sit at Strumble Head to watch
+                the dolphins, porpoises and gannets. Have a go at identifying wildflowers or butterflies. Keep a
+                look out for Peregrines and Red Kites and spot the seal pups in our coves below Llanwnda in the
+                autumn. There’s plenty to interest everyone.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="{% url 'wildlife' %}">
+                    Find out more
+                </a>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+            <!-- Outdoor pursuits -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/climbing.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Outdoor pursuits</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Kite surfing, kayaking, coasteering, fishing, sailing, climbing, riding, cycling;
+                Pembrokeshire does it all. Local companies provide courses for all levels or you can do your own
+                thing.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="http://www.visitpembrokeshire.com/activities-adventure/" target="_blank">
+                    Find out more
+                </a>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+            <!-- Heritage -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/ancient-stones.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Heritage</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Pembrokeshire wears its long history in its landscape. From ancient stones and burial
+                mounds on the skyline, via former industrial sites tucked away in Porthgain, to the majestic
+                Cathedral in St David’s.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                   href="http://www.visitpembrokeshire.com/attractions-events/castles-and-heritage/" target="_blank">
+                    Find out more
+                </a>
+            </div>
+        </div>
     </div>
-    <main class="mdl-layout__content">
-        <div class="mdl-grid portfolio-max-width">
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-                <!-- Map -->
-                <div id="map" class="location-card-map">
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-                <!-- Location -->
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Location</h2>
-                </div>
-                <div class="mdl-card__title">
-                    <div class="mdl-card__subtitle-text">
-                        <b>Pembrokeshire Coast path</b> &mdash; 15 min walk;<br>
-                        <b>Goodwick</b> &mdash; 1 miles;<br>
-                        <b>Fishguard</b> &mdash; 3 miles<br>
-                        </p>
-                    </div>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Trefechan Wen lies close to the hamlet of Llanwnda on the rugged north coast of Pembrokeshire.
-                    Goodwick is at the bottom of the hill and Fishguard is on the far side of the bay. Further afield
-                    are the City of St David’s with its famous Cathedral, the wildlife islands of Skomer and Ramsey,
-                    renowned for their seals, birds and wildflowers, and Cardigan with its newly restored castle and
-                    the Teifi Marshes and wildlife centre.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="{% url 'location' %}">
-                        Find out more
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-                <!-- Walking -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/abermawr.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Walking</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Pembrokeshire has a variety of majestic landscapes: 186 miles of superb coast path; the
-                    Preseli Hills, source of the bluestones of Stonehenge; the Cleddau estuary, a maze of wooded tidal
-                    inlets. All these areas are easily accessible for walkers. There are routes to suit all inclinations,
-                    from strolls out of Trefechan Wen to all day hikes for the hardy.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="{% url 'walking' %}">
-                        Find out more
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-                <!-- Beaches -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/marloes.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Beaches</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Pembrokeshire boasts over 50 beaches from wide sandy stretches such as Whitesands
-                    and Newport to tiny coves like Abercastle or Pwllgwaelod. Many beaches are dog friendly but
-                    some of the larger ones have dog-free zones during the summer months.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="{% url 'beaches' %}">
-                        Find out more
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-                <!-- Wildlife -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/heron.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Wildlife</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Take a trip round the Islands to spot seals and puffins or sit at Strumble Head to watch
-                    the dolphins, porpoises and gannets. Have a go at identifying wildflowers or butterflies. Keep a
-                    look out for Peregrines and Red Kites and spot the seal pups in our coves below Llanwnda in the
-                    autumn. There’s plenty to interest everyone.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="{% url 'wildlife' %}">
-                        Find out more
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-                <!-- Outdoor pursuits -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/climbing.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Outdoor pursuits</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Kite surfing, kayaking, coasteering, fishing, sailing, climbing, riding, cycling;
-                    Pembrokeshire does it all. Local companies provide courses for all levels or you can do your own
-                    thing.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="http://www.visitpembrokeshire.com/activities-adventure/" target="_blank">
-                        Find out more
-                    </a>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-                <!-- Heritage -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/ancient-stones.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Heritage</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Pembrokeshire wears its long history in its landscape. From ancient stones and burial
-                    mounds on the skyline, via former industrial sites tucked away in Porthgain, to the majestic
-                    Cathedral in St David’s.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="http://www.visitpembrokeshire.com/attractions-events/castles-and-heritage/" target="_blank">
-                        Find out more
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
+</main>
+{% endblock %}
 
+{% block scripts %}
+{% load static %}
 <script src="{% static 'scripts/location.js'%}"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-7c0cIQYLbhWO4rChS0ynEKCLZGyMxkw&callback=initMap">
 </script>
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-</body>
-</html>
+{% endblock %}

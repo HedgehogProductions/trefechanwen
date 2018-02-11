@@ -1,118 +1,88 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Trefechan Wen</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale="1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+{% block header %}
+{% with 'localinfo' as activeTab %}
+{{block.super}}
+{% endwith %}
+{% endblock %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-</head>
-
-<body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-        <div class="mdl-layout__header-row portfolio-logo-row">
-            <span class="mdl-layout__title">
-                <div class="portfolio-logo"></div>
-                <span class="mdl-layout__title">Trefechan Wen</span>
-            </span>
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="mdl-grid portfolio-max-width">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+            <!-- Birdwatching -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/birds.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Birdwatching</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Trefechan Wen is a good all year round base from which to plan your birdwatching expeditions. Sea
+                Watching at Strumble Head, getting close to Puffins on Skomer Island or just sitting on the cliffs
+                watching the Choughs. <a href="http://pembsbirds.blogspot.co.uk/" target="_blank">Local sightings</a>
+                are shared online so you might even tick a rarity. Make the most of your visit by tapping into
+                <a href="http://www.westcoastbirdwatching.co.uk/" target="_blank">local expertise</a>.
+                <br><br>
+                <i>“Memorable moments to savour &mdash; opening the back door (of the cottage) in the morning to
+                    the warming scent of the honeysuckle, a day walking on Ramsey Island seeing peregrine and
+                    chough &mdash; both with chicks”</i>
+            </div>
         </div>
-        <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
-            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-                <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
-                <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
-                <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-            </nav>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+            <!-- Wildflowers -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/wildflowers.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Wildflowers</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Visit St David’s Head in the spring to be greeted by a pink carpet of Thrift. Walk along the coast
+                path and spot the orchids as you go. Enjoy the heady scent of honeysuckle on a summer evening while
+                later in the summer the headlands turn purple as the heather flowers profusely.
+            </div>
         </div>
-    </header>
-    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-            <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-            <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
-            <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
-            <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-        </nav>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+            <!-- Dolphins and Seals -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/seals.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Dolphins and Seals</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                The coves near Trefechan Wen are favourite spots for seals especially in the autumn when the pups
+                are born. Harbour porpoises and dolphins are regularly seen from Strumble Head where
+                <a href="http://whaleswales.blogspot.co.uk/" target="_blank">Whales in Wales</a> keep a regular
+                watch.
+                <br><br>
+                <i>“The cottage was cosy and well equipped. Lots to do and see&hellip; watching the sun setting at
+                Strumble lighthouse and the surprise event of a pod of harbour porpoise swimming by. Magical!”</i>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+            <!-- Boat trips -->
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/boat.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Wildlife Boat Trips</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                One of the best ways to see the wildlife that Pembrokeshire has to offer is by taking a
+                <a href="http://www.visitpembrokeshire.com/attractions-events/boat-trips/" target="_blank">
+                    boat trip</a>. Take in the offshore islands of Ramsey and Skomer and
+                get a different perspective of the local coastline. Head further out where and you might even spot
+                a Whale.
+                <br><br>
+                <i>“Venture Jet – a wet and wild trip around Ramsey Island – porpoises seals and seabirds abound.”</i>
+            </div>
+        </div>
     </div>
-    <main class="mdl-layout__content">
-        <div class="mdl-grid portfolio-max-width">
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <!-- Birdwatching -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/birds.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Birdwatching</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Trefechan Wen is a good all year round base from which to plan your birdwatching expeditions. Sea
-                    Watching at Strumble Head, getting close to Puffins on Skomer Island or just sitting on the cliffs
-                    watching the Choughs. <a href="http://pembsbirds.blogspot.co.uk/" target="_blank">Local sightings</a>
-                    are shared online so you might even tick a rarity. Make the most of your visit by tapping into
-                    <a href="http://www.westcoastbirdwatching.co.uk/" target="_blank">local expertise</a>.
-                    <br><br>
-                    <i>“Memorable moments to savour &mdash; opening the back door (of the cottage) in the morning to
-                        the warming scent of the honeysuckle, a day walking on Ramsey Island seeing peregrine and
-                        chough &mdash; both with chicks”</i>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <!-- Wildflowers -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/wildflowers.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Wildflowers</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Visit St David’s Head in the spring to be greeted by a pink carpet of Thrift. Walk along the coast
-                    path and spot the orchids as you go. Enjoy the heady scent of honeysuckle on a summer evening while
-                    later in the summer the headlands turn purple as the heather flowers profusely.
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <!-- Dolphins and Seals -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/seals.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Dolphins and Seals</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    The coves near Trefechan Wen are favourite spots for seals especially in the autumn when the pups
-                    are born. Harbour porpoises and dolphins are regularly seen from Strumble Head where
-                    <a href="http://whaleswales.blogspot.co.uk/" target="_blank">Whales in Wales</a> keep a regular
-                    watch.
-                    <br><br>
-                    <i>“The cottage was cosy and well equipped. Lots to do and see&hellip; watching the sun setting at
-                    Strumble lighthouse and the surprise event of a pod of harbour porpoise swimming by. Magical!”</i>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <!-- Boat trips -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/boat.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Wildlife Boat Trips</h2>
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    One of the best ways to see the wildlife that Pembrokeshire has to offer is by taking a
-                    <a href="http://www.visitpembrokeshire.com/attractions-events/boat-trips/" target="_blank">
-                        boat trip</a>. Take in the offshore islands of Ramsey and Skomer and
-                    get a different perspective of the local coastline. Head further out where and you might even spot
-                    a Whale.
-                    <br><br>
-                    <i>“Venture Jet – a wet and wild trip around Ramsey Island – porpoises seals and seabirds abound.”</i>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-</body>
-</html>
+</main>
+{% endblock %}

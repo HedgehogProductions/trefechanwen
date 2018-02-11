@@ -1,99 +1,69 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Trefechan Wen</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale="1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+{% block header %}
+{% with 'availability' as activeTab %}
+{{block.super}}
+{% endwith %}
+{% endblock %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-</head>
-
-<body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-        <div class="mdl-layout__header-row portfolio-logo-row">
-        <span class="mdl-layout__title">
-            <div class="portfolio-logo"></div>
-            <span class="mdl-layout__title">Trefechan Wen</span>
-        </span>
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="mdl-grid portfolio-max-width">
+        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">The Cottage</h2>
+            </div>
+            <div id="availabilityCalendarCottage" class="mdl-grid availability-calendar-grid">
+                <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                    <button id="lastMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
+                                            mdl-button--mini-fab availability-button-left">
+                        <i class="material-icons">chevron_left</i>
+                    </button>
+                </div>
+                <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
+                    <div class="mdl-grid">
+                        <div id="availabilityCalendarCottageMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
+                        <div id="availabilityCalendarCottageMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                    <button id="nextMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
+                                                mdl-button--mini-fab availability-button-right">
+                        <i class="material-icons">chevron_right</i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
-            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-                <a class="mdl-navigation__link is-active" href="{% url 'availability' %}">Availability</a>
-                <a class="mdl-navigation__link" href="{% url 'localinfo' %}">Local Info</a>
-                <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-            </nav>
+        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">The Barn</h2>
+            </div>
+            <div id="availabilityCalendarBarn" class="mdl-grid availability-calendar-grid">
+                <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                    <button id="lastMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
+                                            mdl-button--mini-fab availability-button-left">
+                        <i class="material-icons">chevron_left</i>
+                    </button>
+                </div>
+                <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
+                    <div class="mdl-grid">
+                        <div id="availabilityCalendarBarnMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
+                        <div id="availabilityCalendarBarnMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                    <button id="nextMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
+                                                mdl-button--mini-fab availability-button-right">
+                        <i class="material-icons">chevron_right</i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
-    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-            <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-            <a class="mdl-navigation__link is-active" href="{% url 'availability' %}">Availability</a>
-            <a class="mdl-navigation__link" href="{% url 'localinfo' %}">Local Info</a>
-            <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-        </nav>
     </div>
-    <main class="mdl-layout__content">
-        <div class="mdl-grid portfolio-max-width">
-            <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">The Cottage</h2>
-                </div>
-                <div id="availabilityCalendarCottage" class="mdl-grid availability-calendar-grid">
-                    <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                        <button id="lastMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
-                                                mdl-button--mini-fab availability-button-left">
-                            <i class="material-icons">chevron_left</i>
-                        </button>
-                    </div>
-                    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
-                        <div class="mdl-grid">
-                            <div id="availabilityCalendarCottageMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                            <div id="availabilityCalendarCottageMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                        <button id="nextMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
-                                                    mdl-button--mini-fab availability-button-right">
-                            <i class="material-icons">chevron_right</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">The Barn</h2>
-                </div>
-                <div id="availabilityCalendarBarn" class="mdl-grid availability-calendar-grid">
-                    <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                        <button id="lastMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
-                                                mdl-button--mini-fab availability-button-left">
-                            <i class="material-icons">chevron_left</i>
-                        </button>
-                    </div>
-                    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
-                        <div class="mdl-grid">
-                            <div id="availabilityCalendarBarnMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                            <div id="availabilityCalendarBarnMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                        <button id="nextMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
-                                                    mdl-button--mini-fab availability-button-right">
-                            <i class="material-icons">chevron_right</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
 <script defer src="{% static 'scripts/availability.js' %}"></script>
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-</body>
-</html>
+{% endblock %}

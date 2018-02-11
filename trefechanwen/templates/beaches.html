@@ -1,87 +1,56 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Trefechan Wen</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", minimum-scale="1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+{% block header %}
+{% with 'localinfo' as activeTab %}
+{{block.super}}
+{% endwith %}
+{% endblock %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-</head>
-
-<body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-        <div class="mdl-layout__header-row portfolio-logo-row">
-            <span class="mdl-layout__title">
-                <div class="portfolio-logo"></div>
-                <span class="mdl-layout__title">Trefechan Wen</span>
-            </span>
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="mdl-grid portfolio-max-width">
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/westdale-bay.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Pembrokeshire has over 50 beaches to choose from several of which hold awards for water quality and
+                general management. You can find beaches with cafes and other facilities close by or you can escape
+                to an unspoilt spot and have it to yourself. Trefechan Wen is well placed to explore the sand all
+                year round.
+                <br><br>
+                <i>“We also explored a couple of secret beaches &mdash; it is a real privilege to find you have an
+                    entire beach all to yourselves.”</i>
+            </div>
         </div>
-        <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
-            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-                <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
-                <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
-                <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-            </nav>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/whitesands.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Pembrokeshire has several beaches that are ideal for families and are patrolled by
+                <a href="http://enjoy.pcnpa.org.uk/details.asp?acid=1" target="_blank">lifeguards</a> in the summer
+                months.
+                <br><br>
+                <i>“Poppit sands and Whitesands were fab beaches, the boys loved going in the waves and rock pools.
+                    We caught so many crabs.”</i>
+            </div>
         </div>
-    </header>
-    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-            <a class="mdl-navigation__link" href="{% url 'index' %}">Cottages</a>
-            <a class="mdl-navigation__link" href="{% url 'availability' %}">Availability</a>
-            <a class="mdl-navigation__link is-active" href="{% url 'localinfo' %}">Local Info</a>
-            <a class="mdl-navigation__link" href="{% url 'contact' %}">Contact</a>
-        </nav>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__media">
+                {% load static %}
+                <img class="article-image" src="{% static 'images/alfie.jpg'%}" border="0" alt="">
+            </div>
+            <div class="mdl-card__supporting-text mdl-card--expand">
+                Most of our canine guests enjoy visiting the beach &mdash; perhaps almost as much as their owners.
+                Most of Pembrokeshire’s beaches are dog friendly but some of the more popular ones do have
+                <a href="http://www.visitpembrokeshire.com/holidays-and-breaks/dog-friendly-holidays/dog-friendly-beaches/" target="_blank">
+                    restrictions</a>.
+                “We and the dogs had a wonderful time exploring the area, especially the beach at Newport which made a perfect racetrack for two whippets.”
+            </div>
+        </div>
     </div>
-    <main class="mdl-layout__content">
-        <div class="mdl-grid portfolio-max-width">
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/westdale-bay.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Pembrokeshire has over 50 beaches to choose from several of which hold awards for water quality and
-                    general management. You can find beaches with cafes and other facilities close by or you can escape
-                    to an unspoilt spot and have it to yourself. Trefechan Wen is well placed to explore the sand all
-                    year round.
-                    <br><br>
-                    <i>“We also explored a couple of secret beaches &mdash; it is a real privilege to find you have an
-                        entire beach all to yourselves.”</i>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/whitesands.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Pembrokeshire has several beaches that are ideal for families and are patrolled by
-                    <a href="http://enjoy.pcnpa.org.uk/details.asp?acid=1" target="_blank">lifeguards</a> in the summer
-                    months.
-                    <br><br>
-                    <i>“Poppit sands and Whitesands were fab beaches, the boys loved going in the waves and rock pools.
-                        We caught so many crabs.”</i>
-                </div>
-            </div>
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{% static 'images/alfie.jpg'%}" border="0" alt="">
-                </div>
-                <div class="mdl-card__supporting-text mdl-card--expand">
-                    Most of our canine guests enjoy visiting the beach &mdash; perhaps almost as much as their owners.
-                    Most of Pembrokeshire’s beaches are dog friendly but some of the more popular ones do have
-                    <a href="http://www.visitpembrokeshire.com/holidays-and-breaks/dog-friendly-holidays/dog-friendly-beaches/" target="_blank">
-                        restrictions</a>.
-                    “We and the dogs had a wonderful time exploring the area, especially the beach at Newport which made a perfect racetrack for two whippets.”
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-</body>
-</html>
+</main>
+{% endblock %}
