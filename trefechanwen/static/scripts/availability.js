@@ -138,7 +138,7 @@ function changeAllMonths(monthChange) {
     var currentMonth = document.getElementById("availabilityCalendarCottageMonth1").getAttribute("month");
     var currentYear = document.getElementById("availabilityCalendarCottageMonth1").getAttribute("year");
 
-    var firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+    var firstDayOfMonth = new Date(currentYear, currentMonth, 1, 1, 0, 0, 0);
     firstDayOfMonth.setMonth(firstDayOfMonth.getMonth() + monthChange);
 
     var firstDayOfNextMonth = new Date(firstDayOfMonth);
