@@ -1,58 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="mdl-layout__content">
-    <div class="mdl-grid portfolio-max-width">
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-shadow--4dp">
-            <div class="intro-card">
-                Two appealing traditional stone holiday cottages near the spectacular north coast of
-                the Pembrokeshire National Park. Perfect for a romantic break or a family holiday all
-                year round. The area is excellent for walking, watersports, wildlife or just watching
-                the sunset at Strumble Head. Trefechan Wen offers peaceful tranquillity for those
-                who want to escape and opportunities for those craving adventure.
-            </div>
-        </div>
-        <div class="barn-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-            <!-- Barn -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-barn.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">The Barn</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                We are working on Trefechan Wen
-                Barn and hope to have it ready for
-                holidays in 2019.
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                   href="{% url 'barn' %}">
-                    More Info
-                </a>
-            </div>
-        </div>
-        <div class="cottage-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-            <!-- Cottage -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-cottage.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">The Cottage</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                Trefechan Wen Cottage sleeps four and
-                has a cot available. Dogs are welcome.
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                   href="{% url 'cottage' %}">
-                    More Info
-                </a>
-            </div>
+<div class="mdl-grid portfolio-max-width">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-shadow--4dp">
+        <div class="intro-card">
+            Two appealing traditional stone holiday cottages near the spectacular north coast of
+            the Pembrokeshire National Park. Perfect for a romantic break or a family holiday all
+            year round. The area is excellent for walking, watersports, wildlife or just watching
+            the sunset at Strumble Head. Trefechan Wen offers peaceful tranquillity for those
+            who want to escape and opportunities for those craving adventure.
         </div>
     </div>
-</main>
+    <div class="barn-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Barn -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-barn.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">The Barn</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            We are working on Trefechan Wen
+            Barn and hope to have it ready for
+            holidays in 2019.
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+               href="{% url 'barn' %}">
+                More Info
+            </a>
+        </div>
+    </div>
+    <div class="cottage-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Cottage -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-cottage.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">The Cottage</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            Trefechan Wen Cottage sleeps four and
+            has a cot available. Dogs are welcome.
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+               href="{% url 'cottage' %}">
+                More Info
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

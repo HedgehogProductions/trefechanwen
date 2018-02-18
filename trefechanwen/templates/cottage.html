@@ -1,168 +1,169 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="mdl-layout__content">
-    <div class="mdl-grid portfolio-max-width">
-        <div class="terms-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h4>
-                    Saturday changeover<br>
-                    Sorry, no smoking in the Cottage
-                </h4>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                    id="cottageTermsButton">
-                    See all Terms and Conditions
-                </a>
-            </div>
+<div class="mdl-grid portfolio-max-width">
+    <div class="terms-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <h4>
+                Saturday changeover<br>
+                Sorry, no smoking in the Cottage
+            </h4>
         </div>
-        <div class="book-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                <h2 class="mdl-card__title-text">Book Now</h2>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                    href="{% url 'availability' %}">
-                    Check Availability
-                </a>
-                <div class="mdl-layout-spacer"></div>
-                <i class="material-icons">event</i>
-            </div>
-        </div>
-        <div class="access-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h4>
-                    Wheelchair accessible bedroom<br>
-                    2 steps to front door
-                </h4>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                    id="cottageAccessButton">
-                    Read Full Access Statement
-                </a>
-            </div>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-            <!-- Lounge -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-cottage_lounge.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Lounge & Dining Area</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                A cosy lounge area with high beamed ceiling with exposed
-                timbers, feature stone fireplace with
-                wood-burning stove and comfortable
-                seating for 4. Includes a 32&Prime; flat screen TV with
-                DVD player, music system, a well stocked
-                bookcase, games and a wealth of
-                tourist information. Wi&ndash;fi is also available.<br>
-                The dining area has a table with 4
-                chairs. A high chair is available on request.<br>
-                Stable doors lead to a garden and courtyard.
-            </div>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-            <!-- Kitchen -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-cottage_kitchen.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Kitchen</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                A good sized, well equipped room, with
-                fitted units, electric oven, gas hob,
-                microwave, fridge/ freezer and washing
-                machine. Tea towels are provided.<br>
-                The cottage has oil fired central heating
-                with radiators in all rooms.
-            </div>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-            <!-- Bedroom -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-cottage_bedroom.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Bedroom</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                A downstairs bedroom with twin beds, wardrobe
-                and well stocked book case. On request the
-                two beds can be pushed together to make a large
-                double bed &mdash; just let us know.<br>
-                A travel cot (size????) is available on request.
-            </div>
-        </div>
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-            <!-- Crog Loft -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-cottage_crog-loft.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Crog Loft</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                Double bedroom in a galleried crog loft,
-                snug under the rafters with sloping
-                ceilings. This room is reached via a
-                narrow spiral staircase (with stairgates)
-                from the lounge.<br>
-                Except for the travel cot all bedlinen is
-                provided and is washed in chemical free
-                detergent.
-            </div>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-            <!-- Bathroom -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-cottage_bathroom.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Bathroom</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                The bathroom is on the ground floor
-                with toilet, washbasin and bath with a
-                shower over. Bath and hand towels are
-                provided (but not beach or dog towels.)
-            </div>
-        </div>
-        <div class="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
-            <!-- Garden -->
-            <div class="mdl-card__media">
-                {% load static %}
-                <img class="article-image" src="{% static 'images/the-cottage_garden.jpg'%}" border="0" alt="">
-            </div>
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Garden</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-card--expand">
-                To the rear of the cottage is a sheltered,
-                enclosed garden with seating area and
-                garden furniture. To the front of the
-                cottage is ample parking for cars.
-                Attached to the cottage is a lockable
-                outhouse which has a tumble drier and
-                space for storing bikes, wetsuits etc.<br>
-                N.B. there are the ruins of a traditional
-                stone Welsh longhouse in the front
-                courtyard &mdash; care with children, please.
-                The front courtyard is shared with the
-                owners.
-            </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                id="cottageTermsButton">
+                See all Terms and Conditions
+            </a>
         </div>
     </div>
-</main>
+    <div class="book-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            <h2 class="mdl-card__title-text">Book Now</h2>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                href="{% url 'availability' %}">
+                Check Availability
+            </a>
+            <div class="mdl-layout-spacer"></div>
+            <i class="material-icons">event</i>
+        </div>
+    </div>
+    <div class="access-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <h4>
+                Wheelchair accessible bedroom<br>
+                2 steps to front door
+            </h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                id="cottageAccessButton">
+                Read Full Access Statement
+            </a>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Lounge -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-cottage_lounge.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Lounge & Dining Area</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            A cosy lounge area with high beamed ceiling with exposed
+            timbers, feature stone fireplace with
+            wood-burning stove and comfortable
+            seating for 4. Includes a 32&Prime; flat screen TV with
+            DVD player, music system, a well stocked
+            bookcase, games and a wealth of
+            tourist information. Wi&ndash;fi is also available.<br>
+            The dining area has a table with 4
+            chairs. A high chair is available on request.<br>
+            Stable doors lead to a garden and courtyard.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+        <!-- Kitchen -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-cottage_kitchen.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Kitchen</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            A good sized, well equipped room, with
+            fitted units, electric oven, gas hob,
+            microwave, fridge/ freezer and washing
+            machine. Tea towels are provided.<br>
+            The cottage has oil fired central heating
+            with radiators in all rooms.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+        <!-- Bedroom -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-cottage_bedroom.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Bedroom</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            A downstairs bedroom with twin beds, wardrobe
+            and well stocked book case. On request the
+            two beds can be pushed together to make a large
+            double bed &mdash; just let us know.<br>
+            A travel cot (size????) is available on request.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Crog Loft -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-cottage_crog-loft.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Crog Loft</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            Double bedroom in a galleried crog loft,
+            snug under the rafters with sloping
+            ceilings. This room is reached via a
+            narrow spiral staircase (with stairgates)
+            from the lounge.<br>
+            Except for the travel cot all bedlinen is
+            provided and is washed in chemical free
+            detergent.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+        <!-- Bathroom -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-cottage_bathroom.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Bathroom</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            The bathroom is on the ground floor
+            with toilet, washbasin and bath with a
+            shower over. Bath and hand towels are
+            provided (but not beach or dog towels.)
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Garden -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-cottage_garden.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Garden</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            To the rear of the cottage is a sheltered,
+            enclosed garden with seating area and
+            garden furniture. To the front of the
+            cottage is ample parking for cars.
+            Attached to the cottage is a lockable
+            outhouse which has a tumble drier and
+            space for storing bikes, wetsuits etc.<br>
+            N.B. there are the ruins of a traditional
+            stone Welsh longhouse in the front
+            courtyard &mdash; care with children, please.
+            The front courtyard is shared with the
+            owners.
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block modals %}
 <div id="cottageTermsModal" class="terms-modal">
     <div class="modal-content mdl-card">
         <div class="mdl-card__title">

@@ -7,60 +7,58 @@
 {% endblock %}
 
 {% block content %}
-<main class="mdl-layout__content">
-    <div class="mdl-grid portfolio-max-width">
-        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">The Cottage</h2>
-            </div>
-            <div id="availabilityCalendarCottage" class="mdl-grid availability-calendar-grid">
-                <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                    <button id="lastMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
-                                            mdl-button--mini-fab availability-button-left">
-                        <i class="material-icons">chevron_left</i>
-                    </button>
-                </div>
-                <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
-                    <div class="mdl-grid">
-                        <div id="availabilityCalendarCottageMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                        <div id="availabilityCalendarCottageMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                    <button id="nextMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
-                                                mdl-button--mini-fab availability-button-right">
-                        <i class="material-icons">chevron_right</i>
-                    </button>
-                </div>
-            </div>
+<div class="mdl-grid portfolio-max-width">
+    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">The Cottage</h2>
         </div>
-        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">The Barn</h2>
+        <div id="availabilityCalendarCottage" class="mdl-grid availability-calendar-grid">
+            <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                <button id="lastMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
+                                        mdl-button--mini-fab availability-button-left">
+                    <i class="material-icons">chevron_left</i>
+                </button>
             </div>
-            <div id="availabilityCalendarBarn" class="mdl-grid availability-calendar-grid">
-                <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                    <button id="lastMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
-                                            mdl-button--mini-fab availability-button-left">
-                        <i class="material-icons">chevron_left</i>
-                    </button>
+            <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
+                <div class="mdl-grid">
+                    <div id="availabilityCalendarCottageMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
+                    <div id="availabilityCalendarCottageMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
                 </div>
-                <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
-                    <div class="mdl-grid">
-                        <div id="availabilityCalendarBarnMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                        <div id="availabilityCalendarBarnMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--1-col availability-button-container">
-                    <button id="nextMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
-                                                mdl-button--mini-fab availability-button-right">
-                        <i class="material-icons">chevron_right</i>
-                    </button>
-                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                <button id="nextMonthCottage" class="mdl-button mdl-js-button mdl-button--fab
+                                            mdl-button--mini-fab availability-button-right">
+                    <i class="material-icons">chevron_right</i>
+                </button>
             </div>
         </div>
     </div>
-</main>
+    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">The Barn</h2>
+        </div>
+        <div id="availabilityCalendarBarn" class="mdl-grid availability-calendar-grid">
+            <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                <button id="lastMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
+                                        mdl-button--mini-fab availability-button-left">
+                    <i class="material-icons">chevron_left</i>
+                </button>
+            </div>
+            <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
+                <div class="mdl-grid">
+                    <div id="availabilityCalendarBarnMonth1" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
+                    <div id="availabilityCalendarBarnMonth2" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet"></div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--1-col availability-button-container">
+                <button id="nextMonthBarn" class="mdl-button mdl-js-button mdl-button--fab
+                                            mdl-button--mini-fab availability-button-right">
+                    <i class="material-icons">chevron_right</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
