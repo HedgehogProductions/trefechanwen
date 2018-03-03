@@ -214,6 +214,10 @@ img.article-image {
     float: right;
 }
 
+.availability-card {
+    min-width: 330px;
+}
+
 .availability-button-container {
     position: relative;
 }
@@ -237,7 +241,12 @@ img.article-image {
 }
 
 .availability-calendar-container {
-    justify-content: center;
+    min-width: 302px;
+}
+
+.availability-calendar-month-container {
+    min-width: 268px;
+    margin: 8px auto;
 }
 
 .availability-calendar-title {
@@ -246,6 +255,7 @@ img.article-image {
 
 .availability-calendar-month {
     margin: 0 auto;
+    min-width: 268px;
 }
 
 .availability-calendar-key {
@@ -272,6 +282,7 @@ img.article-image {
     text-align: center;
     color: white;
     position: relative;
+    pointer-events: none;
 }
 
 .availability-calendar-day {
@@ -314,6 +325,7 @@ img.article-image {
 .availability-calendar-grid {
     margin: 0;
     justify-content: center;
+    padding-bottom: 24px;
 }
 
 .availability-cottage {

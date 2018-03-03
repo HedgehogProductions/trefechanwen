@@ -19,11 +19,13 @@ function daysInMonth(month, year) {
 }
 
 // Get the html for a calendar cell with given text
-function getCellHtml(content, bookingType) {
+function getCellHtml(content, id, bookingType, price) {
     var cellHtmlClass = "";
+    var showPrice = true;
     switch(bookingType) {
         case BookingType.ALL:
             cellHtmlClass = " availability-full";
+            showPrice = false;
             break;
         case BookingType.AM:
             cellHtmlClass = " availability-pm";
@@ -33,22 +35,36 @@ function getCellHtml(content, bookingType) {
             break;
         default:
     }
-    return "<td class=\"availability-calendar-day" + cellHtmlClass + "\"><a class=\"availability-calendar-text-container\" href=\"#\"></a>" +
-        "<div class=\"availability-calendar-text\">" + content + "</div></td>";
+
+    var tooltipContent = "Contact us<br>for prices";
+    if(price) {
+        tooltipContent = "&pound;" + price.toString() + " per week";
+    }
+
+    var cellHtml = "<td class=\"availability-calendar-day" + cellHtmlClass + "\">" +
+        "<a id=\"" + id + "\" class=\"availability-calendar-text-container\" href=\"#\"></a>" +
+        "<div class=\"availability-calendar-text\">" + content + "</div>";
+
+    if(showPrice) {
+        cellHtml += "<span data-mdl-for=\"" + id + "\" class=\"mdl-tooltip mdl-tooltip--bottom\">" + tooltipContent + "</span>"
+    }
+
+    cellHtml += "</td>";
+
+    return  cellHtml;
 }
 function getEmptyCellHtml(content) {
     return "<td class=\"availability-calendar-day empty-day\"><a class=\"availability-calendar-text-container\" href=\"#\"></a>" +
         "<div class=\"availability-calendar-text\">" + content + "</div></td>";
 }
 
-// Extract dates booked from database results, given a property and month
+// Extract dates booked from database results, given a property
 function getBookedDates(property, xmlHttpResults) {
     var bookings = new Map();
     var bookingStatus = BookingType.NONE;
     var datesJson = JSON.parse(xmlHttpResults);
     for (var dateNumber = 0; dateNumber < datesJson.results.length; ++dateNumber) {
         var date = new Date(datesJson.results[dateNumber].date);
-        //var bookingsSet = datesJson.results[date]
         switch(property) {
             case Property.COTTAGE:
                 booking_status = datesJson.results[dateNumber].cottage_booking_status;
@@ -79,10 +95,19 @@ function getBookedDates(property, xmlHttpResults) {
     return bookings;
 }
 
+// Extract prices from database results, given a property
+function getPrices(property, xmlHttpResults) {
+    var prices = new Map();
+    var pricesJson = JSON.parse(xmlHttpResults);
+
+    return prices;
+}
+
 // Build HTML for month calendar view
-function getMonthHtml(month, year, property, xmlHttpResults) {
+function getMonthHtml(month, year, property, availabilityResults, pricesResults) {
     var firstDayOfMonth = new Date(year, month, 1);
-    var bookedDates = getBookedDates(property, xmlHttpResults);
+    var bookedDates = getBookedDates(property, availabilityResults);
+    var prices = getPrices(property, pricesResults)
 
     var monthHtml = "";
 
@@ -111,28 +136,33 @@ function getMonthHtml(month, year, property, xmlHttpResults) {
     for (var emptyCell = 0; emptyCell < emptyCells; emptyCell++) {
         monthHtml += getEmptyCellHtml("");
     }
+
+    var dateIdSeed = property.toString() + "-" + yearString + "-" + monthString + "-";
     var daysInThisMonth = daysInMonth(firstDayOfMonth.getMonth(), firstDayOfMonth.getFullYear());
     for (var dayOfMonth = 1;
          dayOfMonth <= daysInThisMonth;
          dayOfMonth++) {
-        if ((dayOfMonth + emptyCells) % 7 === 1) {
+        if (dayOfMonth > 1 && (dayOfMonth + emptyCells) % 7 === 1) {
             monthHtml += "<tr>";
         }
-        monthHtml += getCellHtml(dayOfMonth.toString(), bookedDates.get(dayOfMonth));
+        monthHtml += getCellHtml(
+            dayOfMonth.toString(), dateIdSeed + dayOfMonth.toString(), bookedDates.get(dayOfMonth), prices.get(dayOfMonth));
         if ((dayOfMonth + emptyCells) % 7 === 0) {
             monthHtml += "</tr>";
         }
     }
     monthHtml += "</tr></tbody></table>";
+    console.log(monthHtml);
     return monthHtml;
 }
 
-function updateMonthView(viewId, property, xmlHttpResults) {
+function updateMonthView(viewId, property, availabilityResults, pricesResults) {
     var currentMonth = document.getElementById(viewId).getAttribute("month");
     var currentYear = document.getElementById(viewId).getAttribute("year");
     var firstDayOfMonth = new Date(currentYear, currentMonth, 1);
 
-    document.getElementById(viewId).innerHTML = getMonthHtml(firstDayOfMonth.getMonth(), firstDayOfMonth.getFullYear(), property, xmlHttpResults);
+    document.getElementById(viewId).innerHTML =
+        getMonthHtml(firstDayOfMonth.getMonth(), firstDayOfMonth.getFullYear(), property, availabilityResults, pricesResults);
 }
 
 function changeAllMonths(monthChange) {
@@ -171,14 +201,16 @@ function changeAllMonths(monthChange) {
     var xhttpRequestMonth2 = new XMLHttpRequest();
     xhttpRequestMonth1.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            updateMonthView("availabilityCalendarCottageMonth1", Property.COTTAGE, this.responseText);
-            updateMonthView("availabilityCalendarBarnMonth1", Property.BARN, this.responseText);
+            updateMonthView("availabilityCalendarCottageMonth1", Property.COTTAGE, this.responseText, null);
+            updateMonthView("availabilityCalendarBarnMonth1", Property.BARN, this.responseText, null);
+            componentHandler.upgradeDom();
         }
     };
     xhttpRequestMonth2.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            updateMonthView("availabilityCalendarCottageMonth2", Property.COTTAGE, this.responseText);
-            updateMonthView("availabilityCalendarBarnMonth2", Property.BARN, this.responseText);
+            updateMonthView("availabilityCalendarCottageMonth2", Property.COTTAGE, this.responseText, null);
+            updateMonthView("availabilityCalendarBarnMonth2", Property.BARN, this.responseText, null);
+            componentHandler.upgradeDom();
         }
     };
     xhttpRequestMonth1.open("GET", urlParamsMonth1, true);
