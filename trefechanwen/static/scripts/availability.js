@@ -33,10 +33,12 @@ function getCellHtml(content, bookingType) {
             break;
         default:
     }
-    return "<td class=\"availability-calendar-day" + cellHtmlClass + "\"><a class=\"availability-calendar-text\" href=\"#\">" + content + "</a></td>";
+    return "<td class=\"availability-calendar-day" + cellHtmlClass + "\"><a class=\"availability-calendar-text-container\" href=\"#\"></a>" +
+        "<div class=\"availability-calendar-text\">" + content + "</div></td>";
 }
 function getEmptyCellHtml(content) {
-    return "<td class=\"availability-calendar-day empty-day\"><a class=\"availability-calendar-text\" href=\"#\">" + content + "</a></td>";
+    return "<td class=\"availability-calendar-day empty-day\"><a class=\"availability-calendar-text-container\" href=\"#\"></a>" +
+        "<div class=\"availability-calendar-text\">" + content + "</div></td>";
 }
 
 // Extract dates booked from database results, given a property and month
