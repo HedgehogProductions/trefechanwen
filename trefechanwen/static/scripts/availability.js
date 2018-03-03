@@ -152,7 +152,6 @@ function getMonthHtml(month, year, property, availabilityResults, pricesResults)
         }
     }
     monthHtml += "</tr></tbody></table>";
-    console.log(monthHtml);
     return monthHtml;
 }
 

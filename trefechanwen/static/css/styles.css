@@ -20,9 +20,10 @@
 }
 
 .mdl-layout__title {
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
-    font-weight: 300;
+    font-weight: 600;
+    color: rgb(63,81,181);
 }
 
 .is-compact .mdl-layout__title span {
@@ -38,7 +39,7 @@
 }
 
 .portfolio-logo {
-    background: url(/static/images/logo-2.png) 50% no-repeat;
+    background: url(/static/images/logo.png) 50% no-repeat;
     background-size: cover;
     height: 150px;
     width: 150px;
