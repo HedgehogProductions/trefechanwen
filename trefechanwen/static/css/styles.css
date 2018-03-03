@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.mdl-layout__header.is-compact {
+    max-height: 109px;
+}
+
 .mdl-mini-footer {
     padding: 0px 16px;
 }
