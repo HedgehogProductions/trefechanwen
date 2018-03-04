@@ -1,4 +1,4 @@
-from .models import AvailabilityDate, Booking, Property
+from .models import AvailabilityDate, Booking, Property, PricingPeriod
 from rest_framework import serializers
 
 
@@ -16,3 +16,8 @@ class PropertySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Property
         fields = ('__all__')
+
+class PricingPeriodSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = PricingPeriod
+        fields = ('property', 'start_date', 'end_date', 'price')

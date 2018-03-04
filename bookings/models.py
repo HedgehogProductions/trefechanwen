@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import MinValueValidator
+from decimal import Decimal
 
 class AvailabilityDate(models.Model):
 
@@ -14,6 +16,8 @@ class AvailabilityDate(models.Model):
     date = models.DateField(primary_key=True)
     cottage_booking_status = models.CharField(max_length=2, choices=BOOKING_TYPE_CHOICES, default='FR')
     barn_booking_status = models.CharField(max_length=2, choices=BOOKING_TYPE_CHOICES, default='FR')
+    cottage_week_price = models.DecimalField(max_digits=4, decimal_places=0, null=True)
+    barn_week_price = models.DecimalField(max_digits=4, decimal_places=0, null=True)
 
 
     # Metadata
@@ -77,3 +81,34 @@ class Property(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class PricingPeriod(models.Model):
+
+    # Fields
+    property = models.ForeignKey(
+        'Property',
+        on_delete=models.CASCADE,
+    )
+    start_date = models.DateField()
+    end_date = models.DateField()
+    price = models.DecimalField(max_digits=4, decimal_places=0, validators=[MinValueValidator(Decimal('0'))],
+                                help_text="Enter the full-week price - e.g. 660")
+    dates = models.ManyToManyField(AvailabilityDate)
+
+
+    # Metadata
+    class Meta:
+        ordering = ["start_date"]
+
+
+    # Methods
+    def get_absolute_url(self):
+         """
+         Returns the url to access a particular instance of MyModelName.
+         """
+         return reverse('model-detail-view', args=[str(self.id)])
+
+    def __str__(self):
+        return '%s(%s - %s): £%s' % (self.property.name,self.start_date,self.end_date,self.price)

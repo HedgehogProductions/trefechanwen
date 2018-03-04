@@ -2,8 +2,8 @@ import datetime
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from .models import AvailabilityDate, Booking, Property
-from .serializers import AvailabilityDateSerializer, BookingSerializer, PropertySerializer
+from .models import AvailabilityDate, Booking, Property, PricingPeriod
+from .serializers import AvailabilityDateSerializer, BookingSerializer, PropertySerializer, PricingPeriodSerializer
 
 # Create your views here.
 class AvailabilityDateViewSet(viewsets.ModelViewSet):
@@ -44,3 +44,11 @@ class PropertyViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = Property.objects.all().order_by('-name')
     serializer_class = PropertySerializer
+
+class PricingPeriod(viewsets.ModelViewSet):
+    """
+    API endpoint that allows pricing periods to be viewed or edited.
+    """
+
+    queryset = PricingPeriod.objects.all().order_by('-start_date')
+    serializer_class = PricingPeriodSerializer
