@@ -15,7 +15,6 @@ class BookingForm(forms.ModelForm):
         fields = '__all__'
 
     def clean(self):
-        logger = logging.getLogger(__name__)
         # Save original dates and property in case of change
         self.original_start_date = self.instance.start_date
         self.original_end_date = self.instance.end_date
@@ -40,9 +39,7 @@ class BookingForm(forms.ModelForm):
         booking = super(BookingForm, self).save(commit=False)
         booking.save()
 
-
         # if the dates or property has changed:
-        logger.error("Changed: " + str(self.changed_data))
         if self.changed_data:
             logger.error("Changing dates from: " + str(self.original_start_date) + " - " + str(self.original_end_date) +
             " to: " + str(self.cleaned_data.get('start_date')) + " - " + str(self.cleaned_data.get('end_date')) +
