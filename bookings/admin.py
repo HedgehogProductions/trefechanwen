@@ -250,16 +250,22 @@ class BookingForm(forms.ModelForm):
 
 
 class BookingAdmin(admin.ModelAdmin):
+    view_on_site = False
     exclude = ('dates',)
     form = BookingForm
     list_display = ('property', 'start_date', 'end_date', 'customer_name')
     list_filter = ('property', 'start_date',)
 
 class AvailabilityAdmin(admin.ModelAdmin):
+    view_on_site = False
     list_display = ('date', 'cottage_booking_status', 'barn_booking_status', 'cottage_week_price', 'barn_week_price')
     list_filter = ('date', 'cottage_booking_status', 'barn_booking_status',)
 
+class PropertyAdmin(admin.ModelAdmin):
+    view_on_site = False
+
 class PricingPeriodAdmin(admin.ModelAdmin):
+    view_on_site = False
     exclude = ('dates',)
     form = PricingPeriodForm
     list_display = ('property', 'start_date', 'end_date', 'price')
@@ -355,5 +361,5 @@ def delete_booking(sender, instance, **kwargs):
 # Register your models here.
 admin.site.register(AvailabilityDate, AvailabilityAdmin)
 admin.site.register(Booking, BookingAdmin)
-admin.site.register(Property)
+admin.site.register(Property, PropertyAdmin)
 admin.site.register(PricingPeriod, PricingPeriodAdmin)
