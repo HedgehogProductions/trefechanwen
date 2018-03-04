@@ -20,8 +20,6 @@ from rest_framework import routers
 from bookings import views as bookings_views
 
 router = routers.DefaultRouter()
-router.register(r'bookings', bookings_views.BookingViewSet)
-router.register(r'propertys', bookings_views.PropertyViewSet)
 router.register(r'availabilitydates', bookings_views.AvailabilityDateViewSet, base_name='AvailabilityDates')
 
 
