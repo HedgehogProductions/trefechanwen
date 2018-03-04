@@ -38,7 +38,7 @@ function getCellHtml(content, id, bookingType, price) {
 
     var tooltipContent = "Contact us<br>for prices";
     if(price) {
-        tooltipContent = "&pound;" + price.toString() + " per week";
+        tooltipContent = "&pound;" + price.toString() + "<br>per week";
     }
 
     var cellHtml = "<td class=\"availability-calendar-day" + cellHtmlClass + "\">" +
@@ -46,7 +46,7 @@ function getCellHtml(content, id, bookingType, price) {
         "<div class=\"availability-calendar-text\">" + content + "</div>";
 
     if(showPrice) {
-        cellHtml += "<span data-mdl-for=\"" + id + "\" class=\"mdl-tooltip mdl-tooltip--bottom\">" + tooltipContent + "</span>"
+        cellHtml += "<span data-mdl-for=\"" + id + "\" class=\"mdl-tooltip mdl-tooltip--right mdl-tooltip--large\">" + tooltipContent + "</span>"
     }
 
     cellHtml += "</td>";
@@ -61,7 +61,7 @@ function getEmptyCellHtml(content) {
 // Extract dates booked from database results, given a property
 function getBookedDates(property, xmlHttpResults) {
     var bookings = new Map();
-    var bookingStatus = BookingType.NONE;
+    var booking_status = BookingType.NONE;
     var datesJson = JSON.parse(xmlHttpResults);
     for (var dateNumber = 0; dateNumber < datesJson.results.length; ++dateNumber) {
         var date = new Date(datesJson.results[dateNumber].date);
@@ -89,7 +89,7 @@ function getBookedDates(property, xmlHttpResults) {
                 bookings.set(date.getDate(), BookingType.PM);
                 break;
             default:
-                console.error("Cannot handle unknown booking status " + bookingStatus + " on " + date.toISOString());
+                console.error("Cannot handle unknown booking status " + booking_status + " on " + date.toISOString());
         }
     }
     return bookings;
@@ -98,16 +98,30 @@ function getBookedDates(property, xmlHttpResults) {
 // Extract prices from database results, given a property
 function getPrices(property, xmlHttpResults) {
     var prices = new Map();
-    var pricesJson = JSON.parse(xmlHttpResults);
-
+    var price = null;
+    var datesJson = JSON.parse(xmlHttpResults);
+    for (var dateNumber = 0; dateNumber < datesJson.results.length; ++dateNumber) {
+        var date = new Date(datesJson.results[dateNumber].date);
+        switch (property) {
+            case Property.COTTAGE:
+                price = datesJson.results[dateNumber].cottage_week_price;
+                break;
+            case Property.BARN:
+                price = datesJson.results[dateNumber].barn_week_price;
+                break;
+            default:
+                console.error("Cannot get price for unknown property " + property);
+        }
+        prices.set(date.getDate(), price);
+    }
     return prices;
 }
 
 // Build HTML for month calendar view
-function getMonthHtml(month, year, property, availabilityResults, pricesResults) {
+function getMonthHtml(month, year, property, availabilityResults) {
     var firstDayOfMonth = new Date(year, month, 1);
     var bookedDates = getBookedDates(property, availabilityResults);
-    var prices = getPrices(property, pricesResults)
+    var prices = getPrices(property, availabilityResults)
 
     var monthHtml = "";
 
@@ -155,13 +169,13 @@ function getMonthHtml(month, year, property, availabilityResults, pricesResults)
     return monthHtml;
 }
 
-function updateMonthView(viewId, property, availabilityResults, pricesResults) {
+function updateMonthView(viewId, property, availabilityResults) {
     var currentMonth = document.getElementById(viewId).getAttribute("month");
     var currentYear = document.getElementById(viewId).getAttribute("year");
     var firstDayOfMonth = new Date(currentYear, currentMonth, 1);
 
     document.getElementById(viewId).innerHTML =
-        getMonthHtml(firstDayOfMonth.getMonth(), firstDayOfMonth.getFullYear(), property, availabilityResults, pricesResults);
+        getMonthHtml(firstDayOfMonth.getMonth(), firstDayOfMonth.getFullYear(), property, availabilityResults);
 }
 
 function changeAllMonths(monthChange) {
@@ -200,15 +214,15 @@ function changeAllMonths(monthChange) {
     var xhttpRequestMonth2 = new XMLHttpRequest();
     xhttpRequestMonth1.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            updateMonthView("availabilityCalendarCottageMonth1", Property.COTTAGE, this.responseText, null);
-            updateMonthView("availabilityCalendarBarnMonth1", Property.BARN, this.responseText, null);
+            updateMonthView("availabilityCalendarCottageMonth1", Property.COTTAGE, this.responseText);
+            updateMonthView("availabilityCalendarBarnMonth1", Property.BARN, this.responseText);
             componentHandler.upgradeDom();
         }
     };
     xhttpRequestMonth2.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            updateMonthView("availabilityCalendarCottageMonth2", Property.COTTAGE, this.responseText, null);
-            updateMonthView("availabilityCalendarBarnMonth2", Property.BARN, this.responseText, null);
+            updateMonthView("availabilityCalendarCottageMonth2", Property.COTTAGE, this.responseText);
+            updateMonthView("availabilityCalendarBarnMonth2", Property.BARN, this.responseText);
             componentHandler.upgradeDom();
         }
     };
