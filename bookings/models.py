@@ -18,6 +18,8 @@ class AvailabilityDate(models.Model):
     barn_booking_status = models.CharField(max_length=2, choices=BOOKING_TYPE_CHOICES, default='FR')
     cottage_week_price = models.DecimalField(max_digits=4, decimal_places=0, null=True)
     barn_week_price = models.DecimalField(max_digits=4, decimal_places=0, null=True)
+    cottage_week_price_discount = models.BooleanField(default=False)
+    barn_week_price_discount = models.BooleanField(default=False)
 
 
     # Metadata
@@ -95,6 +97,7 @@ class PricingPeriod(models.Model):
     end_date = models.DateField()
     price = models.DecimalField(max_digits=4, decimal_places=0, validators=[MinValueValidator(Decimal('0'))],
                                 help_text="Enter the full-week price - e.g. 660")
+    discount = models.BooleanField(default=False, help_text="Select to mark price as discounted")
     dates = models.ManyToManyField(AvailabilityDate)
 
 

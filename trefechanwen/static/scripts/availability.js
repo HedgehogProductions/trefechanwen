@@ -19,7 +19,7 @@ function daysInMonth(month, year) {
 }
 
 // Get the html for a calendar cell with given text
-function getCellHtml(content, id, bookingType, price) {
+function getCellHtml(content, id, bookingType, price, discount) {
     var cellHtmlClass = "";
     var showPrice = true;
     switch(bookingType) {
@@ -45,8 +45,16 @@ function getCellHtml(content, id, bookingType, price) {
         "<a id=\"" + id + "\" class=\"availability-calendar-text-container\" href=\"#\"></a>" +
         "<div class=\"availability-calendar-text\">" + content + "</div>";
 
+    var discountHtml = "";
+    var discountContent = "";
+    if(discount) {
+        discountHtml = " availability-discount-tooltip";
+        discountContent = "<br>(no further discounts)";
+    }
+
     if(showPrice) {
-        cellHtml += "<span data-mdl-for=\"" + id + "\" class=\"mdl-tooltip mdl-tooltip--right mdl-tooltip--large\">" + tooltipContent + "</span>"
+        cellHtml += "<span data-mdl-for=\"" + id + "\" class=\"mdl-tooltip mdl-tooltip--right mdl-tooltip--large"
+            + discountHtml + "\">" + tooltipContent + discountContent + "</span>"
     }
 
     cellHtml += "</td>";
@@ -117,11 +125,32 @@ function getPrices(property, xmlHttpResults) {
     return prices;
 }
 
+// Extract prices from database results, given a property
+function getDiscounts(property, xmlHttpResults) {
+    var discounts = new Map();
+    var datesJson = JSON.parse(xmlHttpResults);
+    for (var dateNumber = 0; dateNumber < datesJson.results.length; ++dateNumber) {
+        var date = new Date(datesJson.results[dateNumber].date);
+        switch (property) {
+            case Property.COTTAGE:
+                discounts.set(date.getDate(), datesJson.results[dateNumber].cottage_week_price_discount);
+                break;
+            case Property.BARN:
+                discounts.set(date.getDate(), datesJson.results[dateNumber].barn_week_price_discount);
+                break;
+            default:
+                console.error("Cannot get discount status for unknown property " + property);
+        }
+    }
+    return discounts;
+}
+
 // Build HTML for month calendar view
 function getMonthHtml(month, year, property, availabilityResults) {
     var firstDayOfMonth = new Date(year, month, 1);
     var bookedDates = getBookedDates(property, availabilityResults);
-    var prices = getPrices(property, availabilityResults)
+    var prices = getPrices(property, availabilityResults);
+    var discounts = getDiscounts(property, availabilityResults);
 
     var monthHtml = "";
 
@@ -159,8 +188,8 @@ function getMonthHtml(month, year, property, availabilityResults) {
         if (dayOfMonth > 1 && (dayOfMonth + emptyCells) % 7 === 1) {
             monthHtml += "<tr>";
         }
-        monthHtml += getCellHtml(
-            dayOfMonth.toString(), dateIdSeed + dayOfMonth.toString(), bookedDates.get(dayOfMonth), prices.get(dayOfMonth));
+        monthHtml += getCellHtml(dayOfMonth.toString(), dateIdSeed + dayOfMonth.toString(),
+                                    bookedDates.get(dayOfMonth), prices.get(dayOfMonth), discounts.get(dayOfMonth));
         if ((dayOfMonth + emptyCells) % 7 === 0) {
             monthHtml += "</tr>";
         }

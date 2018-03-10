@@ -43,7 +43,7 @@ class BookingForm(forms.ModelForm):
         if self.changed_data:
             logger.error("Changing dates from: " + str(self.original_start_date) + " - " + str(self.original_end_date) +
             " to: " + str(self.cleaned_data.get('start_date')) + " - " + str(self.cleaned_data.get('end_date')) +
-            "and property from: " + str(self.original_property) + " to: " + str(self.cleaned_data.get('property')))
+            " and property from: " + str(self.original_property) + " to: " + str(self.cleaned_data.get('property')))
 
             # clear the property from the old dates - if there are any
             if self.original_start_date != None and self.original_end_date != None and self.original_property != None :

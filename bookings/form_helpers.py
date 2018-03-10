@@ -9,7 +9,7 @@ def daterange(start_date, end_date):
         yield start_date + timedelta(n)
 
 
-def set_week_price(date, property, price):
+def set_week_price(date, property, price, discount):
     logger = logging.getLogger(__name__)
     availabilityDate, created = AvailabilityDate.objects.get_or_create(date=date)
 
@@ -18,11 +18,13 @@ def set_week_price(date, property, price):
             logger.error("Cottage already has a price set for: " + str(availabilityDate))
             raise ValueError("Price already set")
         availabilityDate.cottage_week_price = price
+        availabilityDate.cottage_week_price_discount = discount
     elif str(property) == "Barn":
         if price != None and availabilityDate.barn_week_price != None:
             logger.error("Barn already has a price set for: " + str(availabilityDate))
             raise ValueError("Price already set")
         availabilityDate.barn_week_price = price
+        availabilityDate.barn_week_price_discount = discount
     else:
         logger.error("Property(" + str(old_property) + ") not valid")
         raise ValueError("Invalid Property")
