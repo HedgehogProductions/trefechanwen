@@ -1,3 +1,6 @@
+/* General */
+
+/* header */
 .portfolio-header {
     position: relative;
     background-image: url(/static/images/header-bg.jpg);
@@ -6,8 +9,6 @@
 
 .portfolio-header .mdl-layout__header-row {
     padding: 0;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -15,19 +16,11 @@
     max-height: 109px;
 }
 
-.mdl-mini-footer {
-    padding: 0px 16px;
-}
-
 .mdl-layout__title {
     font-size: 18px;
     text-align: center;
     font-weight: 600;
     color: rgb(63,81,181);
-}
-
-.is-compact .mdl-layout__title span {
-    display: none;
 }
 
 .portfolio-logo-row {
@@ -38,6 +31,7 @@
     min-height: auto;
 }
 
+/* header logo */
 .portfolio-logo {
     background: url(/static/images/logo.png) 50% no-repeat;
     background-size: cover;
@@ -52,6 +46,12 @@
     margin-top: 7px;
 }
 
+/* header title */
+.is-compact .mdl-layout__title span {
+    display: none;
+}
+
+/* header navigation row */
 .portfolio-navigation-row {
     background-color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
@@ -65,8 +65,6 @@
 }
 
 .portfolio-navigation-row .mdl-navigation__link {
-    -webkit-flex: 1;
-    -ms-flex: 1;
     flex: 1;
     line-height: 42px;
     color: black;
@@ -84,14 +82,13 @@
     display: block;
     position: absolute;
     bottom: 0;
-    left: 0;
     background-color: rgb(255,64,129);
     left: 15%;
 }
 
+/* Card layouts */
 .portfolio-max-width {
     max-width: 1200px;
-    margin: auto;
 }
 
 img.article-image {
@@ -99,69 +96,64 @@ img.article-image {
     height: auto;
 }
 
-.intro-card {
+
+/* Cottage pages */
+
+.cottages-intro-card {
     padding: 16px;
 }
 
-.intro-card_title {
-    float: left;
-}
-
-.intro-card_sub-title {
-    float: right;
-}
-
-.access-card {
+.cottages-access-card {
     background-color: rgb(63,81,181);
 }
 
-.access-card > .mdl-card__title {
+.cottages-access-card > .mdl-card__title {
     color: white;
     align-items: start;
 }
 
-.access-card > .mdl-card__title > h4 {
+.cottages-access-card > .mdl-card__title > h4 {
     margin-top: 0;
 }
 
-.access-card > .mdl-card__actions > .mdl-button--colored {
+.cottages-access-card > .mdl-card__actions > .mdl-button--colored {
     color: white;
 }
 
-.terms-card {
+.cottages-terms-card {
     background-color: rgb(255,64,129);
 }
 
-.terms-card > .mdl-card__title {
+.cottages-terms-card > .mdl-card__title {
     color: white;
     align-items: start;
 }
 
-.terms-card > .mdl-card__title > h4 {
+.cottages-terms-card > .mdl-card__title > h4 {
     margin-top: 0;
 }
 
-.terms-card > .mdl-card__actions > .mdl-button--colored {
+.cottages-terms-card > .mdl-card__actions > .mdl-button--colored {
     color: white;
 }
 
-.book-card {
+.cottages-book-card {
     min-height: 256px;
 }
 
-.book-card > .mdl-card__supporting-text {
+.cottages-book-card > .mdl-card__supporting-text {
     color: #ffffff;
     background: url('/static/images/sunrise.jpg') center / cover;
     width: 100%;
 }
 
-.book-card > .mdl-card__actions {
+.cottages-book-card > .mdl-card__actions {
     display: flex;
     box-sizing:border-box;
     align-items: center;
 }
 
-.book-card > .mdl-card__actions > .material-icons {
+.cottages-book-card > .mdl-card__actions > .material-icons {
     padding-right: 10px;
     color: rgb(63,81,181);
 }
@@ -188,15 +180,8 @@ img.article-image {
     width: 80%;
     max-width: 800px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
-}
-
-@-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
 }
 
 @keyframes animatetop {
@@ -214,24 +199,24 @@ img.article-image {
     float: right;
 }
 
+
+/* Availability pages */
+
 .availability-card {
     min-width: 330px;
+}
+
+.availability-calendar-grid {
+    margin: 0;
+    justify-content: center;
+    padding-bottom: 24px;
 }
 
 .availability-button-container {
     position: relative;
 }
 
-.availability-button-left {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.availability-button-right {
+.availability-button {
     margin: auto;
     position: absolute;
     top: 0;
@@ -249,40 +234,13 @@ img.article-image {
     margin: 8px auto;
 }
 
-.availability-calendar-title {
+.availability-calendar-month-title {
     text-align: center;
 }
 
 .availability-calendar-month {
     margin: 0 auto;
     min-width: 268px;
-}
-
-.availability-calendar-key {
-    position: absolute;
-    right: 16px;
-}
-
-.availability-calendar-text-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    display: block;
-    cursor: default;
-    border-right: 18px solid transparent;
-    border-left: 18px solid transparent;
-    border-top: 18px solid transparent;
-    border-bottom: 18px solid transparent;
-}
-
-.availability-calendar-text {
-    z-index: 5;
-    font-size: 12px;
-    text-align: center;
-    color: white;
-    position: relative;
-    pointer-events: none;
 }
 
 .availability-calendar-day {
@@ -295,23 +253,8 @@ img.article-image {
     line-height: 0;
 }
 
-.availability-calendar-day.key {
-    width: 72px;
-}
-
 .availability-calendar-day.empty-day {
     background-color: transparent;
-}
-
-.availability-am .availability-calendar-text-container {
-    border-right-color: rgb(63,81,181);
-    border-bottom-color: rgb(63,81,181);
-}
-/*.availability-am a:after{border-right:36px solid rgb(76,175,80)}*/
-
-.availability-pm .availability-calendar-text-container {
-    border-left-color: rgb(63,81,181);
-    border-top-color: rgb(63,81,181);
 }
 
 .availability-change {
@@ -322,72 +265,33 @@ img.article-image {
     background-color: rgb(63,81,181);
 }
 
-.availability-calendar-grid {
-    margin: 0;
-    justify-content: center;
-    padding-bottom: 24px;
-}
-
-.availability-cottage {
+.availability-calendar-text-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
-    height: 0;
     display: block;
-    border-right: 18px solid transparent;
-    border-left: 18px solid transparent;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
+    cursor: default;
+    border: 18px solid transparent;
 }
 
-.availability-cottage-full {
-    background-color: rgb(76,175,80);
+.availability-am .availability-calendar-text-container {
+    border-right-color: rgb(63,81,181);
+    border-bottom-color: rgb(63,81,181);
 }
 
-.availability-cottage-change {
-    background-color: rgb(76,175,80);
+.availability-pm .availability-calendar-text-container {
+    border-left-color: rgb(63,81,181);
+    border-top-color: rgb(63,81,181);
 }
 
-.availability-cottage-am {
-    border-right-color: rgb(76,175,80);
-    border-bottom-color: rgb(76,175,80);
-}
-
-.availability-cottage-pm {
-    border-left-color: rgb(76,175,80);
-    border-top-color: rgb(76,175,80);
-}
-
-.availability-barn {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 0;
-    height: 0;
-    display: block;
-    border-right: 18px solid transparent;
-    border-left: 18px solid transparent;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-}
-
-.availability-barn-full {
-    background-color: rgb(3,169,244);
-}
-
-.availability-barn-change {
-    background-color: rgb(3,169,244);
-}
-
-.availability-barn-am {
-    border-right-color: rgb(3,169,244);
-    border-bottom-color: rgb(3,169,244);
-}
-
-.availability-barn-pm {
-    border-left-color: rgb(3,169,244);
-    border-top-color: rgb(3,169,244);
+.availability-calendar-text {
+    z-index: 5;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    position: relative;
+    pointer-events: none;
 }
 
 .availability-discount-tooltip {
@@ -395,28 +299,40 @@ img.article-image {
     font-weight: 600;
 }
 
-.location-card-map {
+/* key */
+.availability-calendar-key {
+    position: absolute;
+    right: 16px;
+}
+
+.availability-calendar-day.key {
+    width: 72px;
+}
+
+
+/* Local Info pages */
+.localinfo-map-card {
     min-height: 350px;
     height: 100%;
     width: 100%;
 }
 
-.facilities-card {
+.location-facilities-card {
     min-height: 256px;
     background: url('/static/images/signpost_1.jpg') center / cover;
 }
 
-.eating-out-card {
+.location-eating-out-card {
     min-height: 256px;
     background: url('/static/images/wave_1.jpg') center / cover;
 }
 
-.festivals-card {
+.location-festivals-card {
     min-height: 256px;
     background: url('/static/images/sky_2.jpg') center / cover;
 }
 
-.info-provided-card {
+.location-info-provided-card {
     min-height: 256px;
     background: url('/static/images/sky_3.jpg') center / cover;
 }

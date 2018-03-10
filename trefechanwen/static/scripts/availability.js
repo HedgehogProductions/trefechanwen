@@ -162,7 +162,7 @@ function getMonthHtml(month, year, property, availabilityResults) {
     // Build month header
     var yearString = firstDayOfMonth.getFullYear().toString();
     var monthString = monthStrings[firstDayOfMonth.getMonth()];
-    monthHtml += "<div class=\"availability-calendar-title\">" + monthString + " " + yearString + "</div>";
+    monthHtml += "<div class=\"availability-calendar-month-title\">" + monthString + " " + yearString + "</div>";
 
     // Build column headers
     var weekHeaders = "<table class=\"availability-calendar-month\"><thead><tr>";
