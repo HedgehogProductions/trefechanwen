@@ -85,8 +85,8 @@ def delete_pricing_period(sender, instance, **kwargs):
     logger.error("About to delete a pricing period: " + str(instance))
 
     # clear the property price from the old dates - if there are any
-    if instance.original_start_date != None and instance.original_end_date != None and instance.original_property != None :
-        logger.error("removing old dates from " + str(instance.original_property))
+    if instance.start_date != None and instance.end_date != None and instance.property != None :
+        logger.error("removing old dates from " + str(instance.property))
         # Revert price to None on all 'AvailabilityDate's
         for oldDate in daterange(instance.start_date, instance.end_date):
             set_week_price(oldDate, instance.property, None, False)
