@@ -24,7 +24,6 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ['www.hedgehogproductions.co.uk']
 DEBUG = False
 
 # Application definition
@@ -124,7 +123,7 @@ DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -157,3 +156,48 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOW_METHODS = (
     'GET',
 )
+
+ADMINS = os.environ.get('DJANGO_ADMINS')
+
+SERVER_EMAIL = 'django@trefechanwen.co.uk'
+EMAIL_HOST='smtp.sendgrid.net'
+EMAIL_PORT=587
+EMAIL_HOST_USER=os.environ.get('SENDGRID_USERNAME')
+EMAIL_HOST_PASSWORD=os.environ.get('SENDGRID_PASSWORD')
+EMAIL_USE_TLS=True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        }
+    },
+}
