@@ -157,7 +157,7 @@ CORS_ALLOW_METHODS = (
     'GET',
 )
 
-ADMINS = os.environ.get('DJANGO_ADMINS')
+ADMINS = [admin.split(",") for admin in os.environ.get('DJANGO_ADMINS').split(":")]
 
 SERVER_EMAIL = 'django@trefechanwen.co.uk'
 EMAIL_HOST='smtp.sendgrid.net'
