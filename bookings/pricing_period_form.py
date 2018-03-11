@@ -42,14 +42,14 @@ class PricingPeriodForm(forms.ModelForm):
 
         # if the dates or property has changed:
         if self.changed_data:
-            logger.error("Changing dates from: " + str(self.original_start_date) + " - " + str(self.original_end_date) +
+            logger.debug("Changing dates from: " + str(self.original_start_date) + " - " + str(self.original_end_date) +
             " to: " + str(self.cleaned_data.get('start_date')) + " - " + str(self.cleaned_data.get('end_date')) +
             ", property from: " + str(self.original_property) + " to: " + str(self.cleaned_data.get('property')) +
             " and price from: " + str(self.original_price) + " to: " + str(self.cleaned_data.get('price')))
 
             # clear the property price from the old dates - if there are any
-            if self.original_start_date != None and self.original_end_date != None and self.original_property != None :
-                logger.error("removing old dates from " + str(self.original_property))
+            if self.original_start_date != None and self.original_end_date != None and self.original_property != None:
+                logger.debug("removing old dates from " + str(self.original_property))
                 # Revert price to None on all 'AvailabilityDate's
                 for oldDate in daterange(self.original_start_date, self.original_end_date):
                     set_week_price(oldDate, self.original_property, None, False)
@@ -73,7 +73,7 @@ class PricingPeriodForm(forms.ModelForm):
 
 
         else:
-            logger.error("No change")
+            logger.debug("No change")
 
         return pricing_period
 
@@ -82,11 +82,11 @@ class PricingPeriodForm(forms.ModelForm):
 @receiver(pre_delete, sender=PricingPeriod)
 def delete_pricing_period(sender, instance, **kwargs):
     logger = logging.getLogger(__name__)
-    logger.error("About to delete a pricing period: " + str(instance))
+    logger.debug("About to delete a pricing period: " + str(instance))
 
     # clear the property price from the old dates - if there are any
-    if instance.start_date != None and instance.end_date != None and instance.property != None :
-        logger.error("removing old dates from " + str(instance.property))
+    if instance.start_date != None and instance.end_date != None and instance.property != None:
+        logger.debug("removing old dates from " + str(instance.property))
         # Revert price to None on all 'AvailabilityDate's
         for oldDate in daterange(instance.start_date, instance.end_date):
             set_week_price(oldDate, instance.property, None, False)
