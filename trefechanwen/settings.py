@@ -159,6 +159,8 @@ CORS_ALLOW_METHODS = (
 
 ADMINS = [admin.split(",") for admin in os.environ.get('DJANGO_ADMINS').split(":")]
 
+SECURE_SSL_REDIRECT=True
+
 SERVER_EMAIL = 'django@trefechanwen.co.uk'
 EMAIL_HOST='smtp.sendgrid.net'
 EMAIL_PORT=587
