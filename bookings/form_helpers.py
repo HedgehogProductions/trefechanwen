@@ -16,13 +16,13 @@ def set_week_price(date, property, price, discount):
     if str(property) == "Cottage":
         if price != None and availabilityDate.cottage_week_price != None:
             logger.error("Cottage already has a price set for: " + str(availabilityDate))
-            raise ValueError("Cottage already has a price set for: " + str(availabilityDate))
+            raise ValueError("Cottage already has a price set for: " + str(availabilityDate.date))
         availabilityDate.cottage_week_price = price
         availabilityDate.cottage_week_price_discount = discount
     elif str(property) == "Barn":
         if price != None and availabilityDate.barn_week_price != None:
             logger.error("Barn already has a price set for: " + str(availabilityDate))
-            raise ValueError("Barn already has a price set for: " + str(availabilityDate))
+            raise ValueError("Barn already has a price set for: " + str(availabilityDate.date))
         availabilityDate.barn_week_price = price
         availabilityDate.barn_week_price_discount = discount
     else:
