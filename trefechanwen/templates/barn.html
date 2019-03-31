@@ -1,20 +1,199 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="mdl-grid portfolio-max-width">
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-shadow--4dp">
-            <div class="cottages-intro-card">
-                We are currently working on Trefechan Wen Barn and hope to have it ready for holidays in 2019.
-            </div>
+<div class="mdl-grid portfolio-max-width">
+    <div class="cottages-terms-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <h4>
+                Friday changeover<br>
+                Sorry, no smoking in the Barn
+            </h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                id="cottageTermsButton">
+                See all Terms and Conditions
+            </a>
         </div>
     </div>
+    <div class="cottages-book-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            <h2 class="mdl-card__title-text">Book Now</h2>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                href="{% url 'availability' %}">
+                Check Availability
+            </a>
+            <div class="mdl-layout-spacer"></div>
+            <i class="material-icons">event</i>
+        </div>
+    </div>
+    <div class="cottages-access-card mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <h4>
+                Accommodation on one level<br>
+                1 step to front door<br>
+                Free Wi&ndash;Fi
+            </h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                id="cottageAccessButton">
+                Read Full Access Statement
+            </a>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Kitchen -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-barn_kitchen.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Kitchen & Dining Area</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            The dual-aspect open-plan area is light and airy with
+            double-height ceilings, exposed roof timbers and skylights.<br>
+            The kitchen is well-equipped with electric oven and hob,
+            microwave, fridge/freezer, washing/drying machine and
+            dishwasher. Tea towels are provided.<br>
+            The dining area seats four adjacent to the kitchen.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+        <!-- Lounge -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-barn_lounge.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Lounge</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            The lounge has seating for four, coffee table,
+            sideboard with games and tourist information,
+            a well-stocked bookcase, 32” flat-screen TV, DVD
+            and CD player.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+        <!-- Bedroom -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-barn_bedroom2.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Bedroom</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            Twin bedroom – with vaulted ceiling, exposed roof
+            timbers, skylight and window onto courtyard. Bedside
+            unit, chest of drawers and adjacent wardrobe. Bed
+            linen and towels are provided.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Bedroom -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-barn_bedroom1.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Bedroom</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            A generously-sized, dual aspect room with
+            king-sized double bed, wardrobe and chest
+            of drawers. Bed linen and towels are provided
+            and are washed in chemical-free detergent. A
+            travel cot (96x66cm) is available on request
+            – linen is not provided for this.<br>
+            En-suite shower room. A good-sized room with
+            low-level walk-in shower cubicle, washbasin,
+            WC, electric shaver point and heated towel radiator.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+        <!-- Bathroom -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-barn_bathroom.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Bathroom</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            The family bathroom, next to the twin
+            bedroom for easy access, has high ceilings
+            and a skylight and contains a bath with shower
+            over, washbasin, WC and heated towel radiator.
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card mdl-shadow--4dp">
+        <!-- Garden -->
+        <div class="mdl-card__media">
+            {% load static %}
+            <img class="article-image" src="{% static 'images/the-barn_garden.jpg'%}" border="0" alt="">
+        </div>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Garden</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            A door from the reception area leads to a
+            well-fenced, secluded west-facing garden with
+            seating area, garden furniture and rotary
+            washing line.<br>
+            To the front of the Barn, there is ample space
+            for parking in the shared courtyard<br>
+            NB: Adjacent to the Barn are the ruins of a
+            traditional Welsh longhouse – care with
+            children, please.
+        </div>
+    </div>
+
+</div>
 {% endblock %}
 
 {% block modals %}
-<div id="barnTermsModal" class="terms-modal">
-
+<div id="cottageTermsModal" class="terms-modal">
+    <div class="modal-content mdl-card">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Terms & Conditions</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            <b>Placeholder</b>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="modal-ok-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+               href="{% url 'barn' %}"
+               id="cottageTermsClose">
+                OK
+            </a>
+        </div>
+    </div>
 </div>
-<div id="barnAccessModal" class="terms-modal">
-
+<div id="cottageAccessModal" class="terms-modal">
+    <div class="modal-content mdl-card">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">The Barn - Access Statement</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-card--expand">
+            <b>Placeholder:</b> 
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="modal-ok-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+               href="{% url 'barn' %}"
+               id="cottageAccessClose">
+                OK
+            </a>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
+<script defer src="{% static 'scripts/cottages.js'%}"></script>
 {% endblock %}
