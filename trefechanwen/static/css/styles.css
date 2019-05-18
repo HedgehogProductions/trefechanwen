@@ -202,6 +202,10 @@ img.article-image {
 
 /* Availability pages */
 
+.availability-contact-card {
+    min-height: 0px;
+}
+
 .availability-card {
     min-width: 330px;
 }
