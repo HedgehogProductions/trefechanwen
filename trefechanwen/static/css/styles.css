@@ -340,3 +340,27 @@ img.article-image {
     min-height: 256px;
     background: url('/static/images/sky_3.jpg') center / cover;
 }
+
+.covid-header {
+    background-color: darkorange;
+    text-align: center;
+    min-height: 20px;
+    padding: 20px 0;
+}
+
+.covid-header > a:link {
+    color: white;
+    font-weight: bolder;
+}
+.covid-header > a:visited {
+    color: white;
+    font-weight: bolder;
+}
+.covid-header > a:hover {
+    color: white;
+    font-weight: bolder;
+}
+.covid-header > a:active {
+    color: white;
+    font-weight: bolder;
+}

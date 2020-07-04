@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^beaches$', views.beaches, name='beaches'),
     url(r'^wildlife', views.wildlife, name='wildlife'),
     url(r'^contact$', views.contact, name='contact'),
+    url(r'^covid$', views.covid, name='covid'),
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
