@@ -112,3 +112,14 @@ def contact(request):
         'contact.html',
         context={},
     )
+
+def covid(request):
+    """
+    View function for covid page.
+    """
+
+    return render(
+        request,
+        'covid.html',
+        context={},
+    )
